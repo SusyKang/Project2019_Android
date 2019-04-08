@@ -16,9 +16,9 @@ public class JoinRequest extends PostRequest {
     @Override
     protected void onPreExecute() {
         try {
-            String ip = "http://172.30.1.21:80"; // TODO: 테스트 시 수정
-            //  172.30.1.21
-            //  192.168.0.28
+            String ip = "http://192.168.0.28:80"; // TODO: 테스트 시 수정
+            //집  172.30.1.21
+            //304  192.168.0.28
             // http://서버주소:80
             url = new URL(ip + "/users/join");
         } catch (MalformedURLException e) {

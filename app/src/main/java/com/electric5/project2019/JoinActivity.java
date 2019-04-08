@@ -23,9 +23,9 @@ import java.util.LongSummaryStatistics;
 import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends Activity {
-    final static String ip = "http://172.30.1.21:80/users/join"; // TODO: 테스트 시 수정
-    //  172.30.1.21
-    //  192.168.0.28
+    final static String ip = "http://192.168.0.28:80/users/join"; // TODO: 테스트 시 수정
+    //집  172.30.1.21
+    //304  192.168.0.28
     // http://서버주소:80/users/join
     public static LongSummaryStatistics url;
 

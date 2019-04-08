@@ -28,7 +28,6 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
 
     Activity activity;
     URL url;
-    static JSONObject user = null;
 
     public PostRequest(Activity activity) {
         this.activity = activity;
@@ -73,7 +72,6 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
 
                         try {
                             json = new JSONObject(sb.toString());
-                            user = new JSONObject(json.get("user").toString());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
