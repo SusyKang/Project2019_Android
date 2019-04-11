@@ -23,15 +23,16 @@ import java.util.LongSummaryStatistics;
 import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends Activity {
-    final static String ip = "http://192.168.0.28:80/users/join"; // TODO: 테스트 시 수정
+    final static String ip = "http://172.30.1.21:80"; // TODO: 테스트 시 수정
     //집  172.30.1.21
     //304  192.168.0.28
     // http://서버주소:80/users/join
     public static LongSummaryStatistics url;
 
-    EditText join_pw, join_pw2;
+    EditText join_id, join_pw, join_pw2, nickname, babyname, birthy, birthm, birthd;
     ImageView setImage; // 비밀번호 일치 확인 이미지
     RadioGroup gendergroup;
+    RadioButton genderFemale, genderMale;
     String gender;
 
 
@@ -42,9 +43,42 @@ public class JoinActivity extends Activity {
 
         Button join2 = (Button) findViewById(R.id.joinbutton2);
 
-        setImage = (ImageView)findViewById(R.id.setImage);
+        join_id = (EditText) findViewById(R.id.joinidinput);
+
+        join_pw = (EditText) findViewById(R.id.joinpwinput);
+        join_pw2 = (EditText) findViewById(R.id.joinpwinput2);
+
+        nickname = (EditText) findViewById(R.id.nicknameinput);
+        babyname = (EditText) findViewById(R.id.babynameinput);
 
         gendergroup = (RadioGroup) findViewById(R.id.genderGroup);
+        genderFemale = (RadioButton) findViewById(R.id.genderFemale);
+        genderMale = (RadioButton) findViewById(R.id.genderMale);
+
+        birthy = (EditText) findViewById(R.id.birthyear);
+        birthm = (EditText) findViewById(R.id.birthmonth);
+        birthd = (EditText) findViewById(R.id.birthday);
+
+        setImage = (ImageView)findViewById(R.id.setImage);
+
+        // 비밀번호 & 비밀번호 재입력 텍스트 일치하는 지 비교
+        join_pw2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(join_pw.getText().toString().equals(join_pw2.getText().toString())) {
+                    setImage.setImageResource(R.drawable.checked);
+                } else {
+                    setImage.setImageResource(R.drawable.unchecked);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
 
         // RadioButton의 체크 상태에 따라 변화값을 주기 위해 setOncheckedChangeLinstener()메소드를 사용
         gendergroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -65,23 +99,6 @@ public class JoinActivity extends Activity {
         join2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                EditText join_id = (EditText) findViewById(R.id.joinidinput);
-
-                join_pw = (EditText) findViewById(R.id.joinpwinput);
-                join_pw2 = (EditText) findViewById(R.id.joinpwinput2);
-
-                EditText nickname = (EditText) findViewById(R.id.nicknameinput);
-                EditText babyname = (EditText) findViewById(R.id.babynameinput);
-
-                //gendergroup = (RadioGroup) findViewById(R.id.genderGroup);
-                RadioButton genderFemale = (RadioButton) findViewById(R.id.genderFemale);
-                RadioButton genderMale = (RadioButton) findViewById(R.id.genderMale);
-
-                EditText birthy = (EditText) findViewById(R.id.birthyear);
-                EditText birthm = (EditText) findViewById(R.id.birthmonth);
-                EditText birthd = (EditText) findViewById(R.id.birthday);
-
 
                 // 필수 입력 -- 입력하지 않았을 시 회원가입 불가
                 if (join_id.getText().toString().length()==0) {
@@ -149,7 +166,7 @@ public class JoinActivity extends Activity {
                     postDataParam.put("id", join_id.getText().toString());
                     postDataParam.put("password", join_pw.getText().toString());
 
-                    postDataParam.put("username", nickname.getText().toString());
+ //                   postDataParam.put("username", nickname.getText().toString());
                     postDataParam.put("baby", babyname.getText().toString());
 
                     postDataParam.put("gender", gender);
@@ -164,11 +181,11 @@ public class JoinActivity extends Activity {
 
                     // id 중복 체크
                     if (success.equals("true")) {
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
                         Toast.makeText(getApplicationContext(),"회원가입 완료",Toast.LENGTH_LONG).show();
-                        //Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        //startActivity(intent);
-                        ModeChange.act = 1; //로그인 액티비티로
-                        new InsertData(JoinActivity.this).execute(postDataParam);
+                        //ModeChange.act = 1; //로그인 액티비티로
+                        //new InsertData(JoinActivity.this).execute(postDataParam);
                         finish();
                     } else {
                         Toast.makeText(getApplicationContext(),"아이디가 중복됩니다",Toast.LENGTH_LONG).show();

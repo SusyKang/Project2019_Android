@@ -63,7 +63,7 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
                     sb.append(line);
                     break;
                 }
-
+/*
                 if(ModeChange.act==2) { // 메인 액티비티로
                     JSONObject s = null;
                     s = new JSONObject(sb.toString());
@@ -75,9 +75,9 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        System.out.println(json.get("user"));
+
                     }
-                }
+                }       */
                 in.close();
                 return sb.toString();
 

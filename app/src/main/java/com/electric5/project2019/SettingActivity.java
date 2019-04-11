@@ -26,6 +26,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+//TODO : 녹음 업로드 기능 넣기
+// https://stackoverflow.com/questions/4966910/androidhow-to-upload-mp3-file-to-http-server
+// https://taetanee.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-php-%ED%8C%8C%EC%9D%BC-%EC%A0%84%EC%86%A1-%EC%98%88%EC%A0%9C
 public class SettingActivity extends AppCompatActivity {
 
     private MediaRecorder mMediaRecorder;
@@ -154,8 +157,7 @@ public class SettingActivity extends AppCompatActivity {
         Uri uri = Uri.parse("file://" + Environment.getExternalStorageDirectory().getPath() + "/Music/"+ mVoiceFileName);
         audio = uri.toString();
         Toast.makeText(getApplicationContext(), "녹음을 중단합니다", Toast.LENGTH_SHORT).show();
-        //TODO : ?뱀쓬?뚯씪 ?쒕쾭濡??щ━湲?        // https://stackoverflow.com/questions/4966910/androidhow-to-upload-mp3-file-to-http-server
-        // https://taetanee.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-php-%ED%8C%8C%EC%9D%BC-%EC%A0%84%EC%86%A1-%EC%98%88%EC%A0%9C
+
     }
 
 

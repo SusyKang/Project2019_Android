@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
-    final static String url = "http://192.168.0.28:80/users/login"; // TODO: 테스트 시 수정
+    final static String url = "http://172.30.1.21:80/users/login"; // TODO: 테스트 시 수정
     //집  172.30.1.21
     //304  192.168.0.28
     // http://서버주소:80/users/login
