@@ -19,11 +19,11 @@ public class InsertData extends PostRequest {
         String serverURLStr="";
 
         if(ModeChange.act == 1){
-            serverURLStr = JoinActivity.url.toString();
+            serverURLStr = JoinRequest.url.toString();
 
         }
         else if(ModeChange.act==2){
-            serverURLStr = LoginActivity.url.toString();
+            serverURLStr = LoginRequest.url.toString();
         }
         else if(ModeChange.act==3){
             //serverURLStr=ClickActivity.url.toString();

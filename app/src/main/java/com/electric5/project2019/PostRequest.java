@@ -27,7 +27,7 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
     // 세번째 파라미터의 값이 서버로 받은 값을 리턴할 때 사용하는 타입. doinbackground의 리턴값과 일치해야
 
     Activity activity;
-    URL url;
+    static URL url;
 
     public PostRequest(Activity activity) {
         this.activity = activity;

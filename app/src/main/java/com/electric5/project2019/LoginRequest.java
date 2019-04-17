@@ -5,20 +5,17 @@ import android.app.Activity;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-//회원가입
-public class JoinRequest extends PostRequest {
-    //final static String Url = "http://192.168.200.125:3000";
+public class LoginRequest extends PostRequest {
 
-    public JoinRequest(Activity activity) {
+    public LoginRequest(Activity activity) {
         super(activity);
     }
 
     @Override
     protected void onPreExecute() {
         try {
-            String ip = activity.getResources().getString(R.string.ip_address);
-
-            url = new URL(ip + "/users/join");
+            String ip =  activity.getResources().getString(R.string.ip_address);
+            url = new URL(ip + "/users/login");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

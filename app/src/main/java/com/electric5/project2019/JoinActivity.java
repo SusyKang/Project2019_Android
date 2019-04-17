@@ -23,11 +23,6 @@ import java.util.LongSummaryStatistics;
 import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends Activity {
-    final static String ip = "http://172.30.1.21:80"; // TODO: 테스트 시 수정
-    //집  172.30.1.21
-    //304  192.168.0.28
-    // http://서버주소:80/users/join
-    public static LongSummaryStatistics url;
 
     EditText join_id, join_pw, join_pw2, nickname, babyname, birthy, birthm, birthd;
     ImageView setImage; // 비밀번호 일치 확인 이미지
@@ -148,15 +143,13 @@ public class JoinActivity extends Activity {
 
                 // 비밀번호&비밀번호확인 -- 일치하지 않으면 회원가입 불가
                 if(join_pw.getText().toString().equals(join_pw2.getText().toString())) {
-                    Toast.makeText(JoinActivity.this, "비밀번호 일치 확인", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(JoinActivity.this, "비밀번호 일치 확인", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(JoinActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
                     join_pw2.requestFocus();
                     return;
                 }
-
-
 
                 // JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
                 JSONObject postDataParam = new JSONObject();
@@ -181,14 +174,21 @@ public class JoinActivity extends Activity {
 
                     // id 중복 체크
                     if (success.equals("true")) {
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
+                        //Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        //startActivity(intent);
                         Toast.makeText(getApplicationContext(),"회원가입 완료",Toast.LENGTH_LONG).show();
                         //ModeChange.act = 1; //로그인 액티비티로
                         //new InsertData(JoinActivity.this).execute(postDataParam);
-                        finish();
+                        //finish();
                     } else {
-                        Toast.makeText(getApplicationContext(),"아이디가 중복됩니다",Toast.LENGTH_LONG).show();
+                        String data = jsonObject.getString("type");
+
+                        if(data.equals("ID")){
+                            Toast.makeText(getApplicationContext(),"아이디가 중복됩니다",Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(),"닉네임이 중복됩니다",Toast.LENGTH_LONG).show();
+                        }
+
                     }
 
                 } catch (JSONException e) {
