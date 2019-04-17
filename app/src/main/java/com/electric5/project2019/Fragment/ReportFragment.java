@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.electric5.project2019.R;
 
+// 리포트 프래그먼트 - 통계 보기
 public class ReportFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

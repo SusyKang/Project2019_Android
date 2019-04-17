@@ -64,7 +64,7 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
                     break;
                 }
 /*
-                if(ModeChange.act==2) { // 메인 액티비티로
+                if(ModeChange.act==2) {
                     JSONObject s = null;
                     s = new JSONObject(sb.toString());
                     if (s.get("success").toString() == "true") {

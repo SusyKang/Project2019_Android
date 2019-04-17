@@ -166,7 +166,7 @@ public class JoinActivity extends Activity {
                     postDataParam.put("id", join_id.getText().toString());
                     postDataParam.put("password", join_pw.getText().toString());
 
- //                   postDataParam.put("username", nickname.getText().toString());
+                    postDataParam.put("username", nickname.getText().toString());
                     postDataParam.put("baby", babyname.getText().toString());
 
                     postDataParam.put("gender", gender);
