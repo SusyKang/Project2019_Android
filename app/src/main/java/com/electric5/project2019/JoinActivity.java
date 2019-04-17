@@ -23,7 +23,7 @@ import java.util.LongSummaryStatistics;
 import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends Activity {
-    final static String ip = "http://172.30.1.21:80"; // TODO: 테스트 시 수정
+    final static String ip = "http://223.194.154.120:80"; // TODO: 테스트 시 수정
     //집  172.30.1.21
     //304  192.168.0.28
     // http://서버주소:80/users/join
@@ -155,8 +155,6 @@ public class JoinActivity extends Activity {
                     join_pw2.requestFocus();
                     return;
                 }
-
-
 
                 // JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
                 JSONObject postDataParam = new JSONObject();

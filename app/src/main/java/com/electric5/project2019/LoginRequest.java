@@ -5,11 +5,9 @@ import android.app.Activity;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-//회원가입
-public class JoinRequest extends PostRequest {
-    //final static String Url = "http://192.168.200.125:3000";
+public class LoginRequest extends PostRequest {
 
-    public JoinRequest(Activity activity) {
+    public LoginRequest(Activity activity) {
         super(activity);
     }
 
@@ -17,10 +15,7 @@ public class JoinRequest extends PostRequest {
     protected void onPreExecute() {
         try {
             String ip = "http://223.194.154.120:80"; // TODO: 테스트 시 수정
-            //집  172.30.1.21
-            //304  192.168.0.28
-            // http://서버주소:80
-            url = new URL(ip + "/users/join");
+            url = new URL(ip + "/users/login");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

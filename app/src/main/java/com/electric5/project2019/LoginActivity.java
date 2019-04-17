@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 public class LoginActivity extends AppCompatActivity {
 
-    final static String url = "http://172.30.1.21:80/users/login"; // TODO: 테스트 시 수정
+    final static String url = "http://223.194.154.120:80/users/login"; // TODO: 테스트 시 수정
     //집  172.30.1.21
     //304  192.168.0.28
     // http://서버주소:80/users/login
@@ -40,10 +43,29 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     postDataParam_login.put("id", login_id.getText().toString()); // 데이터 집어넣기
                     postDataParam_login.put("password", login_pw.getText().toString());
+
+                    //로그인 요청
+                    String result = new LoginRequest(LoginActivity.this).execute(postDataParam_login).get();
+
+                    //결과값 받기.
+                    JSONObject jsonObject = new JSONObject(result);
+                    String success = jsonObject.getString("success");
+
+                    if (success.equals("true")) {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        ModeChange.act=2; // 메인 액티비티로
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호를 다시 확인하세요", Toast.LENGTH_LONG).show();
+                    }
                 } catch (JSONException e) {
                     Log.e("TAG", "JSONEXception");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
                 }
-                ModeChange.act=2; // 메인 액티비티로
                 new InsertData(LoginActivity.this).execute(postDataParam_login);
 
             }
