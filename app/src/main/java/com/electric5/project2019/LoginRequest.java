@@ -14,7 +14,7 @@ public class LoginRequest extends PostRequest {
     @Override
     protected void onPreExecute() {
         try {
-            String ip = "http://223.194.154.120:80"; // TODO: 테스트 시 수정
+            String ip =  activity.getResources().getString(R.string.ip_address);
             url = new URL(ip + "/users/login");
         } catch (MalformedURLException e) {
             e.printStackTrace();
