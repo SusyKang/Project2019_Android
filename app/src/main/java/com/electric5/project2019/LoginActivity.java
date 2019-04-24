@@ -1,6 +1,7 @@
 package com.electric5.project2019;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,14 +18,18 @@ import java.util.LongSummaryStatistics;
 import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
-    
+    SharedPreferences info;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         Button join = (Button)findViewById(R.id.joinbutton);
         Button login = (Button)findViewById(R.id.loginbutton);
+
+        info = getSharedPreferences("id", MODE_PRIVATE);
 
         //Login 버튼이 눌리면 MainActivity로 가게함
         //TODO : 로그인 기능 구현
@@ -48,10 +53,21 @@ public class LoginActivity extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("true")) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
+                        String data = jsonObject.getString("data");
+                        JSONObject jsonObject2 = new JSONObject(data);
+                        String id = jsonObject2.getString("id");
+
+                        SharedPreferences info = getSharedPreferences("id", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = info.edit();
+                        editor.putString("id", id);
+                        editor.putBoolean("Auto_Login_enabled", true);
+                        editor.apply();
+                        String babyname = info.getString("id","");
+
+                        //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        //startActivity(intent);
                         ModeChange.act=2; // 메인 액티비티로
-                        finish();
+                        //finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호를 다시 확인하세요", Toast.LENGTH_LONG).show();
                     }
@@ -62,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-                new InsertData(LoginActivity.this).execute(postDataParam_login);
+//                new InsertData(LoginActivity.this).execute(postDataParam_login);
 
             }
         });

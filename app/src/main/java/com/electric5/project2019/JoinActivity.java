@@ -177,7 +177,7 @@ public class JoinActivity extends Activity {
                         //Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         //startActivity(intent);
                         Toast.makeText(getApplicationContext(),"회원가입 완료",Toast.LENGTH_LONG).show();
-                        //ModeChange.act = 1; //로그인 액티비티로
+                        ModeChange.act = 1; //로그인 액티비티로
                         //new InsertData(JoinActivity.this).execute(postDataParam);
                         //finish();
                     } else {

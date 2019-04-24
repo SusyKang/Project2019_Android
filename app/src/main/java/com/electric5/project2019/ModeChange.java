@@ -7,7 +7,7 @@ import android.os.Handler;
 
 public class ModeChange extends AppCompatActivity {
 
-    static int act = 2; // 기본값 2로  : 메인 액티비티로
+    static int act;// 기본값 2로  : 메인 액티비티로
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
