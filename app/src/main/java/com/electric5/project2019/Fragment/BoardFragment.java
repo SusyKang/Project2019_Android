@@ -20,7 +20,7 @@ import com.electric5.project2019.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+// 게시판 프래그먼트
 @SuppressLint("ValidFragment")
 public class BoardFragment extends Fragment {
     private Button write;

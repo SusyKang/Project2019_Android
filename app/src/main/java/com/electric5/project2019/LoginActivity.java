@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         info = getSharedPreferences("id", MODE_PRIVATE);
 
         //Login 버튼이 눌리면 MainActivity로 가게함
-        //TODO : 로그인 기능 구현
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
