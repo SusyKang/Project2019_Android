@@ -12,9 +12,9 @@
 
         <ImageView
             android:id="@+id/mainicon"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginTop="100dp"
             android:src="@drawable/calendar" />
 
@@ -28,29 +28,37 @@
             android:hint="babyname"
             android:textSize="30dp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp" >
+
             <TextView
+                android:id="@+id/mainbyear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:gravity="right"
+                android:hint="yyyy"
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:hint="byear"
-                android:id="@+id/mainbyear"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="년"/>
+                android:text="년"
+                android:layout_toRightOf="@id/mainbyear"/>
 
             <TextView
                 android:id="@+id/mainbmonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="bmonth"
+                android:layout_toRightOf="@id/year"
+                android:gravity="right"
+                android:hint="mm"
                 android:textSize="15dp" />
 
             <TextView
@@ -58,47 +66,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="월"
-                android:textSize="15dp" />
+                android:text="월 "
+                android:textSize="15dp"
+                android:layout_toRightOf="@id/mainbmonth"/>
 
             <TextView
                 android:id="@+id/mainbday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="bday"
+                android:layout_toRightOf="@id/month"
+                android:gravity="right"
+                android:hint="dd"
                 android:textSize="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="일 생"
-                android:textSize="15dp" />
-        </LinearLayout>
+                android:textSize="15dp"
+                android:layout_toRightOf="@id/mainbday"/>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
+
             <TextView
+                android:id="@+id/how"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="태어난 지 " />
+                android:layout_below="@id/mainbyear"
+                android:text="태어난 지 "
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/howold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:hint="howold"/>
+                android:layout_toRightOf="@id/how"
+                android:gravity="right"
+                android:hint="howold"
+                android:textSize="20dp" />
             <TextView
+                android:id="@+id/old"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="일 째" />
+                android:text="일 째"
+                android:layout_toRightOf="@id/howold"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
