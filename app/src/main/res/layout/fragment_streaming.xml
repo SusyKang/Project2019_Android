@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg"
-    tools:context=".Fragment.StreamingFragment">
+    tools:context=".StreamingFragment">
 
     <VideoView
         android:layout_width="match_parent"

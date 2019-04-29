@@ -1,4 +1,4 @@
-package com.electric5.project2019.Fragment;
+package com.electric5.project2019;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;

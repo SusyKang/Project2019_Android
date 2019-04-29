@@ -1,6 +1,5 @@
-package com.electric5.project2019.Fragment;
+package com.electric5.project2019;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,23 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.electric5.project2019.ModeChange;
 import com.electric5.project2019.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Struct;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MainFragment extends Fragment {
     public MainFragment() {
@@ -36,14 +26,38 @@ public class MainFragment extends Fragment {
 
         //유저정보 받아오는 코드
         SharedPreferences info = getActivity().getSharedPreferences("id", getActivity().MODE_PRIVATE);
-        String babyname = info.getString("id","");
+        String localid = info.getString("id","");
         final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
+        final TextView mainbyear = (TextView)view.findViewById(R.id.mainbyear);
+        final TextView mainbmonth = (TextView)view.findViewById(R.id.mainbmonth);
+        final TextView mainbday = (TextView)view.findViewById(R.id.mainbday);
 
-        if (info==null){
-            mainbabyname.setText("kkk");
-        } else{
-            mainbabyname.setText(babyname);
 
+        try {
+            //로그인된 사용자 정보 로드
+            JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
+            postDataParam.put("id", localid);
+            String result = new MyinfoRequest(getActivity()).execute(postDataParam).get();
+            JSONObject jsonObject = new JSONObject(result);
+            String success = jsonObject.getString("success");
+
+            if (success.equals("true")) {
+                String data = jsonObject.getString("data");
+                JSONObject jsonObject2 = new JSONObject(data);
+//                String babyname = jsonObject2.getString("baby");
+
+                mainbabyname.setText(jsonObject2.getString("baby"));
+                mainbyear.setText(jsonObject2.getString("Byear"));
+                mainbmonth.setText(jsonObject2.getString("Bmonth"));
+                mainbday.setText(jsonObject2.getString("Bday"));
+
+            }
+        } catch (JSONException e) {
+            Log.e("TAG", "JSONEXception");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
      /*

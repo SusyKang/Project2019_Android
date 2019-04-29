@@ -1,4 +1,4 @@
-package com.electric5.project2019.Fragment;
+package com.electric5.project2019;
 
 import android.app.Activity;
 import android.net.Uri;

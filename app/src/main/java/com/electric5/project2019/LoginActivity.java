@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("id", id);
                         editor.putBoolean("Auto_Login_enabled", true);
                         editor.apply();
-                        String babyname = info.getString("id","");
 
                         //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         //startActivity(intent);

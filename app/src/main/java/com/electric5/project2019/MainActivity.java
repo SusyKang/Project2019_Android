@@ -1,12 +1,7 @@
 package com.electric5.project2019;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,12 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.electric5.project2019.Fragment.BoardFragment;
-import com.electric5.project2019.Fragment.MainFragment;
-import com.electric5.project2019.Fragment.ReportFragment;
-import com.electric5.project2019.Fragment.StreamingFragment;
-
 
 
 public class MainActivity extends AppCompatActivity {

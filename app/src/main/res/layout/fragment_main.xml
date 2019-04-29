@@ -19,13 +19,14 @@
             android:src="@drawable/calendar" />
 
         <TextView
+            android:id="@+id/mainbabyname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:textSize="30dp"
+            android:gravity="center"
             android:hint="babyname"
-            android:id="@+id/mainbabyname"/>
+            android:textSize="30dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,28 +45,34 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:text="년"/>
+
             <TextView
+                android:id="@+id/mainbmonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
                 android:hint="bmonth"
-                android:id="@+id/mainbmonth"/>
+                android:textSize="15dp" />
+
             <TextView
+                android:id="@+id/month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="월"/>
+                android:gravity="center"
+                android:text="월"
+                android:textSize="15dp" />
+
             <TextView
+                android:id="@+id/mainbday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
                 android:hint="bday"
-                android:id="@+id/mainbday"/>
+                android:textSize="15dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="일 생"/>
+                android:text="일 생"
+                android:textSize="15dp" />
         </LinearLayout>
 
         <LinearLayout
