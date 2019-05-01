@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         final MainFragment mainFragment = new MainFragment();
         final StreamingFragment streamingFragment = new StreamingFragment();
         final ReportFragment reportFragment = new ReportFragment();
-        final BoardFragment boardFragment = new BoardFragment();
+        final SettingFragment settingFragment = new SettingFragment();
 
 
         final FragmentTransaction fragmentTransaction =getSupportFragmentManager().beginTransaction();
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                         break;
                     case R.id.button3:
-                        fragmentTransaction.replace(R.id.container, boardFragment);
+                        fragmentTransaction.replace(R.id.container, settingFragment);
                         fragmentTransaction.commit();
                         break;
                 }
@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         final FragmentTransaction fragmentTransaction =getSupportFragmentManager().beginTransaction();
         switch (item.getItemId()) {
-            case R.id.setting:
-                Intent setting = new Intent(this, SettingActivity.class);
-                startActivity(setting);
+            case R.id.editinfo:
+                Intent editinfo = new Intent(this, EditInfoActivity.class);
+                startActivity(editinfo);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

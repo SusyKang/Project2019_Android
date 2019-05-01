@@ -98,7 +98,6 @@
                 android:id="@+id/how"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mainbyear"
                 android:text="태어난 지 "
                 android:textSize="20dp" />
 
@@ -119,6 +118,21 @@
                 android:layout_toRightOf="@id/howold"/>
 
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/babyphoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/baby"/>
+        <Button
+            android:id="@+id/babyphotoupload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사진 등록"
+            android:layout_gravity="center_horizontal"
+            android:background="#00FF0000"/>
 
     </LinearLayout>
 

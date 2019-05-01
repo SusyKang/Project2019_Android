@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg"
-    tools:contect=".JoinActivity">
+    tools:contect=".EditInfoActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="회원 가입"
+        android:text="내 정보 수정"
         android:textSize="30dp"/>
 
     <LinearLayout
@@ -26,19 +26,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID/PW 설정"
+            android:text="PW 수정"
             android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/joinidinput"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:hint="id"
-            android:inputType="text" />
-        <EditText
-            android:id="@+id/joinpwinput"
+            android:id="@+id/editpwinput"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:hint="password"
@@ -48,14 +42,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
-                android:id="@+id/joinpwinput2"
+                android:id="@+id/editpwinput2"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:hint="password 재확인"
                 android:inputType="textPassword" />
             <ImageView
-                android:id="@+id/setImage"
+                android:id="@+id/setImage2"
                 android:layout_width="30dp"
                 android:layout_height="50dp"
                 android:scaleType="fitCenter" />
@@ -73,7 +67,7 @@
             android:textSize="20dp"
             android:textStyle="bold"/>
         <EditText
-            android:id="@+id/babynameinput"
+            android:id="@+id/editbabynameinput"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:hint="아기 이름"
@@ -81,20 +75,20 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/genderGroup"
+            android:id="@+id/editgenderGroup"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="여자"
-                android:id="@+id/genderFemale"
+                android:id="@+id/editgenderFemale"
                 android:layout_weight="1" />
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="남자"
-                android:id="@+id/genderMale"
+                android:id="@+id/editgenderMale"
                 android:layout_weight="1"/>
         </RadioGroup>
 
@@ -115,7 +109,7 @@
             android:orientation="horizontal"
             android:gravity="center">
             <EditText
-                android:id="@+id/birthyear"
+                android:id="@+id/editbirthyear"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:hint="4자리"
@@ -129,7 +123,7 @@
                 android:textColor="#000000"
                 android:textSize="20dp"/>
             <EditText
-                android:id="@+id/birthmonth"
+                android:id="@+id/editbirthmonth"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:hint="01~12"
@@ -143,7 +137,7 @@
                 android:textColor="#000000"
                 android:textSize="20dp"/>
             <EditText
-                android:id="@+id/birthday"
+                android:id="@+id/editbirthday"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:hint="01~31"
@@ -164,8 +158,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Join us"
-        android:id="@+id/joinbutton2"
+        android:text="Edit"
+        android:id="@+id/editbutton"
         android:background="#00ff0000" />
 
 </LinearLayout>
