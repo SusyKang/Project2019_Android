@@ -26,8 +26,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".SettingActivity" />
         <activity android:name=".ModeChange" />
-        <activity android:name=".EditInfoActivity" />
+        <activity android:name=".BoardWriteActivity" />
     </application>
 
 </manifest>

@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.electric5.project2019.R;
@@ -17,8 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-//TODO: Textview howold=오늘날짜-생년월일+1     // 태어난 날부터 1일
-//참고사이트 https://m.blog.naver.com/PostView.nhn?blogId=ch90486&logNo=220404510958&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+
 public class MainFragment extends Fragment {
     public MainFragment() {
         // Required empty public constructor
@@ -35,12 +32,6 @@ public class MainFragment extends Fragment {
         final TextView mainbmonth = (TextView)view.findViewById(R.id.mainbmonth);
         final TextView mainbday = (TextView)view.findViewById(R.id.mainbday);
 
-        ImageView mainicon = (ImageView)view.findViewById(R.id.mainicon); // TODO: 생일날 케이크아이콘 birthday.png로 바뀜
-
-        //TODO: babyphotoupload(버튼) 온클릭 > babyphoto(이미지뷰) 사진 업로드
-        // https://jeongchul.tistory.com/287
-        ImageView babyphoto = (ImageView)view.findViewById(R.id.babyphoto);
-        Button babyphotoupload = (Button)view.findViewById(R.id.babyphotoupload);
 
         try {
             //로그인된 사용자 정보 로드

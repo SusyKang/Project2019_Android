@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/editinfo"
-        android:title="내 정보 수정"
+        android:id="@+id/setting"
+        android:title="환경설정"
         app:showAsAction="always"
-        android:icon="@drawable/edit"/>
+        android:icon="@drawable/setting"/>
 </menu>

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.electric5.project2019.R;
 
 // 리포트 프래그먼트 - 통계 보기
-//TODO: 라즈베리파이가 보내준 위기상황 캡쳐 날짜별로 정리
 public class ReportFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

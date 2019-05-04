@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 
 public class JoinActivity extends Activity {
 
-    EditText join_id, join_pw, join_pw2, babyname, birthy, birthm, birthd;
+    EditText join_id, join_pw, join_pw2, nickname, babyname, birthy, birthm, birthd;
     ImageView setImage; // 비밀번호 일치 확인 이미지
     RadioGroup gendergroup;
     RadioButton genderFemale, genderMale;
@@ -43,6 +43,7 @@ public class JoinActivity extends Activity {
         join_pw = (EditText) findViewById(R.id.joinpwinput);
         join_pw2 = (EditText) findViewById(R.id.joinpwinput2);
 
+        nickname = (EditText) findViewById(R.id.nicknameinput);
         babyname = (EditText) findViewById(R.id.babynameinput);
 
         gendergroup = (RadioGroup) findViewById(R.id.genderGroup);
@@ -110,6 +111,11 @@ public class JoinActivity extends Activity {
                     join_pw2.requestFocus();
                     return;
                 }
+                if (nickname.getText().toString().length()==0) {
+                    Toast.makeText(JoinActivity.this, "닉네임을 입력하세요", Toast.LENGTH_SHORT).show();
+                    nickname.requestFocus();
+                    return;
+                }
                 if (babyname.getText().toString().length()==0) {
                     Toast.makeText(JoinActivity.this, "아기 이름을 입력하세요", Toast.LENGTH_SHORT).show();
                     babyname.requestFocus();
@@ -153,6 +159,7 @@ public class JoinActivity extends Activity {
                     postDataParam.put("id", join_id.getText().toString());
                     postDataParam.put("password", join_pw.getText().toString());
 
+                    postDataParam.put("username", nickname.getText().toString());
                     postDataParam.put("baby", babyname.getText().toString());
 
                     postDataParam.put("gender", gender);

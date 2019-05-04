@@ -45,7 +45,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background = "#00FF0000"
-            android:text="설정"/>
+            android:text="게시판"/>
     </LinearLayout>
 
     <FrameLayout

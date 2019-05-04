@@ -73,6 +73,12 @@
             android:textSize="20dp"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/nicknameinput"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:hint="닉네임 설정"
+            android:inputType="text" />
+        <EditText
             android:id="@+id/babynameinput"
             android:layout_width="200dp"
             android:layout_height="match_parent"
