@@ -1,6 +1,7 @@
 package com.electric5.project2019;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -83,59 +84,75 @@ public class EditInfoActivity extends Activity {
             }
         });
 
+
+
+
+
         // edit 버튼이 눌리면 정보수정 (db 업데이트)
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (edit_pw.getText().toString().length() == 0) {
-                    Toast.makeText(EditInfoActivity.this, "password를 입력하세요", Toast.LENGTH_SHORT).show();
-                    edit_pw.requestFocus();
-                    return;
-                }
-                if (edit_pw2.getText().toString().length() == 0) {
-                    Toast.makeText(EditInfoActivity.this, "password 재확인을 입력하세요", Toast.LENGTH_SHORT).show();
-                    edit_pw2.requestFocus();
-                    return;
-                }
-                if (editbabyname.getText().toString().length() == 0) {
-                    Toast.makeText(EditInfoActivity.this, "아기 이름을 입력하세요", Toast.LENGTH_SHORT).show();
-                    editbabyname.requestFocus();
-                    return;
-                }
-                if ((!editgenderFemale.isChecked()) && (!editgenderMale.isChecked())) {
-                    Toast.makeText(EditInfoActivity.this, "성별을 선택하세요", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (editbirthy.getText().toString().length() == 0) {
-                    Toast.makeText(EditInfoActivity.this, "생년을 입력하세요", Toast.LENGTH_SHORT).show();
-                    editbirthy.requestFocus();
-                    return;
-                }
-                if (editbirthm.getText().toString().length() == 0) {
-                    Toast.makeText(EditInfoActivity.this, "생월을 입력하세요", Toast.LENGTH_SHORT).show();
-                    editbirthm.requestFocus();
-                    return;
-                }
-                if (editbirthd.getText().toString().length() == 0) {
-                    Toast.makeText(EditInfoActivity.this, "생일을 입력하세요", Toast.LENGTH_SHORT).show();
-                    editbirthd.requestFocus();
-                    return;
-                }
-
-                // 비밀번호&비밀번호확인 -- 일치하지 않으면 수정 불가
-                if (edit_pw.getText().toString().equals(edit_pw2.getText().toString())) {
-                    //Toast.makeText(JoinActivity.this, "비밀번호 일치 확인", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(EditInfoActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
-                    edit_pw2.requestFocus();
-                    return;
-                }
-
+                //유저정보 받아오는 코드
+                SharedPreferences info = getSharedPreferences("id", MODE_PRIVATE);
+                String localid = info.getString("id","");
                 // JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
                 JSONObject postDataParam = new JSONObject();
 
-                //TODO: 원래 정보값을 수정해야함 (try-catch문/joinactivity참조)
+                try{
+                    postDataParam.put("id", localid);
+                    if (edit_pw.getText().toString().length() != 0) {
+                        // 비밀번호&비밀번호확인 -- 일치하지 않으면 수정 불가
+                        if (edit_pw.getText().toString().equals(edit_pw2.getText().toString())) {
+                            //Toast.makeText(JoinActivity.this, "비밀번호 일치 확인", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(EditInfoActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                            edit_pw2.requestFocus();
+                            return;
+                        }
+                        if (edit_pw2.getText().toString().length() == 0) {
+                            Toast.makeText(EditInfoActivity.this, "password 재확인을 입력하세요", Toast.LENGTH_SHORT).show();
+                            edit_pw2.requestFocus();
+                            return;
+                        }
+                        postDataParam.put("password", edit_pw.getText().toString());
+                    }
+
+                    if (editbabyname.getText().toString().length() != 0) {
+                        postDataParam.put("baby", editbabyname.getText().toString());
+
+                    }
+                    if ((editgenderFemale.isChecked()) | (editgenderMale.isChecked())) {
+                        postDataParam.put("gender", editgender);
+                    }
+                    if (editbirthy.getText().toString().length() != 0) {
+                        postDataParam.put("Byear", editbirthy.getText().toString());
+                    }
+                    if (editbirthm.getText().toString().length() != 0) {
+                        postDataParam.put("Bmonth", editbirthm.getText().toString());
+                    }
+                    if (editbirthd.getText().toString().length() != 0) {
+                        postDataParam.put("Bday", editbirthd.getText().toString());
+                    }
+
+
+                    String result = new EditInfoRequest(EditInfoActivity.this).execute(postDataParam).get();
+                    JSONObject jsonObject = new JSONObject(result);
+                    String success = jsonObject.getString("success");
+
+
+                    if (success.equals("true")) {
+                        Toast.makeText(getApplicationContext(),"회원정보 수정 완료",Toast.LENGTH_LONG).show();
+                        ModeChange.act = 2;
+                    }
+
+                } catch (JSONException e) {
+                    Log.e("TAG", "JSONEXception");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
