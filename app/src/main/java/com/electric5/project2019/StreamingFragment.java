@@ -16,6 +16,7 @@ import com.electric5.project2019.R;
 // controlbutton1 모빌 작동
 // controlbutton2 녹음 재생
 // controlbutton3 asmr 재생
+// https://blog.naver.com/PostView.nhn?blogId=cosmosjs&logNo=220786475003&categoryNo=83&parentCategoryNo=0&viewDate=&currentPage=19&postListTopCurrentPage=&from=thumbnailList
 public class StreamingFragment extends Fragment {
 
     @Override

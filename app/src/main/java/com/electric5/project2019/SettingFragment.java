@@ -26,7 +26,6 @@ public class SettingFragment extends Fragment {
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
     private String mVoiceFileName = null;
-    private Button play;
 
     String audio;
 
@@ -35,7 +34,9 @@ public class SettingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
         final Button record = (Button)view.findViewById(R.id.record);
-        play = (Button)view.findViewById(R.id.recordplay);
+        final Button play = (Button)view.findViewById(R.id.recordplay);
+
+        checkDangerousPermissions(); // 접근 권한 체크
 
         //녹음 버튼
         record.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +66,45 @@ public class SettingFragment extends Fragment {
         return view;
     }
 
+    final int  REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA = 1;
 
+    // 접근 권한 체크
+    private void checkDangerousPermissions() {
+        String[] permissions = {
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.RECORD_AUDIO
+        };
+
+        int permissionCheck = PackageManager.PERMISSION_GRANTED;
+        for (int i = 0; i < permissions.length; i++) {
+            permissionCheck = ContextCompat.checkSelfPermission(getContext(), permissions[i]);
+            if (permissionCheck == PackageManager.PERMISSION_DENIED) {
+                break;
+            }
+        }
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), permissions, REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA);
+
+        }
+
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) { // permission was granted
+            switch (requestCode) {
+                case REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA:
+                    break;
+            }
+        } else { // permission was denied
+            Toast.makeText(getContext(),"접근 권한이 필요합니다",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    // 재생 시작
     private void playAudio(String uri) throws Exception {
         killMediaPlayer();
         mMediaPlayer = new MediaPlayer();
@@ -73,6 +112,8 @@ public class SettingFragment extends Fragment {
         mMediaPlayer.prepare();
         mMediaPlayer.start();
     }
+
+    // 재생 중단
     private void killMediaPlayer() {
         if (mMediaPlayer != null) {
             try {
@@ -84,15 +125,15 @@ public class SettingFragment extends Fragment {
     }
 
 
-
+    // 녹음 시작
     private void startAudioRec()  {
         mMediaRecorder = new MediaRecorder();
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 
-        mVoiceFileName = "VOICE" + currentDateTimeFormat() + ".mp3";
-        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getPath() + "/Music/" + mVoiceFileName);
+        mVoiceFileName = "VOICE_" + currentDateTimeFormat() + ".mp3"; // 파일 이름 형식
+        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getPath() + "/Music/" + mVoiceFileName); // 파일 저장 경로
 
         try {
             mMediaRecorder.prepare();
@@ -103,6 +144,7 @@ public class SettingFragment extends Fragment {
         }
     }
 
+    // 녹음 중단
     private void stopAudioRec()  {
         mMediaRecorder.stop();
         mMediaRecorder.release();
