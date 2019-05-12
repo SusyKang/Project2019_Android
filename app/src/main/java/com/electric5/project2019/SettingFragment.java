@@ -25,9 +25,8 @@ public class SettingFragment extends Fragment {
 
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
-    private String mVoiceFileName = null;
 
-    String audio;
+    final private static String RECORDED_FILE = "/sdcard/Music/recorded.mp3";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    playAudio(audio);
+                    playAudio();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -105,10 +104,11 @@ public class SettingFragment extends Fragment {
 
 
     // 재생 시작
-    private void playAudio(String uri) throws Exception {
+    private void playAudio() throws Exception {
         killMediaPlayer();
+
         mMediaPlayer = new MediaPlayer();
-        mMediaPlayer.setDataSource(getActivity(), Uri.parse(uri));
+        mMediaPlayer.setDataSource(RECORDED_FILE);
         mMediaPlayer.prepare();
         mMediaPlayer.start();
     }
@@ -117,7 +117,9 @@ public class SettingFragment extends Fragment {
     private void killMediaPlayer() {
         if (mMediaPlayer != null) {
             try {
+                mMediaPlayer.stop();
                 mMediaPlayer.release();
+                mMediaPlayer = null;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -132,8 +134,7 @@ public class SettingFragment extends Fragment {
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 
-        mVoiceFileName = "VOICE_" + currentDateTimeFormat() + ".mp3"; // 파일 이름 형식
-        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getPath() + "/Music/" + mVoiceFileName); // 파일 저장 경로
+        mMediaRecorder.setOutputFile(RECORDED_FILE);
 
         try {
             mMediaRecorder.prepare();
@@ -149,17 +150,7 @@ public class SettingFragment extends Fragment {
         mMediaRecorder.stop();
         mMediaRecorder.release();
         mMediaRecorder = null;
-        Uri uri = Uri.parse("file://" + Environment.getExternalStorageDirectory().getPath() + "/Music/"+ mVoiceFileName);
-        audio = uri.toString();
+
         Toast.makeText(getActivity(), "녹음을 중단합니다", Toast.LENGTH_SHORT).show();
-
     }
-
-    //mp3파일 저장 명에 사용될 날짜 형식
-    private String currentDateTimeFormat(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH_mm");
-        String currentTimeStamp = dateFormat.format(new Date());
-        return currentTimeStamp;
-    }
-
 }
