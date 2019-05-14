@@ -26,7 +26,7 @@ public class SettingFragment extends Fragment {
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
 
-    final private static String RECORDED_FILE = "/sdcard/Music/recorded.mp3";
+    final private static String RECORDED_FILE = "/recorded.mp3";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -108,7 +108,7 @@ public class SettingFragment extends Fragment {
         killMediaPlayer();
 
         mMediaPlayer = new MediaPlayer();
-        mMediaPlayer.setDataSource(RECORDED_FILE);
+        mMediaPlayer.setDataSource(Environment.getExternalStorageDirectory().getPath()+ RECORDED_FILE);
         mMediaPlayer.prepare();
         mMediaPlayer.start();
     }
@@ -134,7 +134,7 @@ public class SettingFragment extends Fragment {
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 
-        mMediaRecorder.setOutputFile(RECORDED_FILE);
+        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory().getPath()+ RECORDED_FILE); // 파일 저장 경로
 
         try {
             mMediaRecorder.prepare();
