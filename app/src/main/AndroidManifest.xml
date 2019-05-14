@@ -28,6 +28,10 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".EditInfoActivity" />
         <activity android:name=".ModeChange" />
+        <activity android:name=".PopUpActivity"
+            android:theme="@style/popupTheme"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
