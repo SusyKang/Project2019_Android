@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <GridView
-        android:id="@+id/gridview"
+    <Button
+        android:id="@+id/report_capture"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:orientation="vertical"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp"/>
+        android:layout_height="wrap_content"
+        android:text="위기 상황 캡쳐 보기"
+        android:padding="50dp"
+        android:drawableTop="@drawable/document"
+        android:background="#00FF0000"/>
+
+
+    <Button
+        android:id="@+id/report_sleeptime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수면 시간 기록 보기"
+        android:padding="50dp"
+        android:layout_marginTop="30dp"
+        android:drawableTop="@drawable/smartcradle"
+        android:background="#00FF0000"/>
+
 </LinearLayout>
 
 

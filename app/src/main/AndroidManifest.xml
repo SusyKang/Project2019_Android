@@ -28,10 +28,12 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".EditInfoActivity" />
         <activity android:name=".ModeChange" />
-        <activity android:name=".PopUpActivity"
-            android:theme="@style/popupTheme"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity android:name=".ReportSleeptimeActivity"/>
+        <activity android:name=".ReportCaptureActivity" />
+        <activity
+            android:name=".PopUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme" />
     </application>
 
 </manifest>
