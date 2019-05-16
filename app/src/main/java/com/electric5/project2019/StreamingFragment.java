@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -19,15 +21,29 @@ import com.electric5.project2019.R;
 // https://blog.naver.com/PostView.nhn?blogId=cosmosjs&logNo=220786475003&categoryNo=83&parentCategoryNo=0&viewDate=&currentPage=19&postListTopCurrentPage=&from=thumbnailList
 public class StreamingFragment extends Fragment {
 
+    private WebView video;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_streaming, container, false);
 
-        String uri = "rtsp://223.194.128.30:8080/test"; // TODO: 라즈베리파이 서버 주소
-        VideoView video = (VideoView) view.findViewById(R.id.videoview);
-        video.setVideoURI(Uri.parse(uri));
-        video.requestFocus();
-        video.start();
+        if (video != null) { video.destroy(); }
+
+        video = (WebView) view.findViewById(R.id.videoview);
+        // video.setPadding(0,0,0,0);
+        video.getSettings().setBuiltInZoomControls(false);
+        video.getSettings().setJavaScriptEnabled(true);
+        video.getSettings().setLoadWithOverviewMode(true);
+        video.getSettings().setUseWideViewPort(true);
+
+        video.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+        video.loadUrl("http://223.194.128.235:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
         return view;
     }

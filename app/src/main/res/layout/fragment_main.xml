@@ -98,7 +98,6 @@
                 android:id="@+id/how"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mainbyear"
                 android:text="태어난 지 "
                 android:textSize="20dp" />
 
