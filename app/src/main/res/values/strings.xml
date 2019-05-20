@@ -3,6 +3,6 @@
     <!--서버 주소
         집  172.30.1.21
         304  192.168.0.28-->
-    <string name="ip_address">http://172.30.1.21:80</string>
+    <string name="ip_address">http://192.168.219.101:80</string>
 
 </resources>
