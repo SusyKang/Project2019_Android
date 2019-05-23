@@ -22,20 +22,20 @@ import com.electric5.project2019.R;
 import java.util.List;
 
 // 리포트 프래그먼트 - 위기상황 캡쳐 보기, 수면 시간 기록 보기 (각각 액티비티로 이동)
+// TODO: 라즈베리파이가 보내준 위기상황 캡쳐 불러오기
 public class ReportFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_report, container, false);
+    //  private Button report_capture, report_sleeptime;
+    //  Activity activity;
 
-        Button b1 = (Button) view.findViewById(R.id.report_capture);
-        Button b2 = (Button) view.findViewById(R.id.report_sleeptime);
+ /*   @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        b1.setOnClickListener(SelectActivityListener);
-        b2.setOnClickListener(SelectActivityListener);
-
-        return view;
-    }
+        activity = getActivity();
+        report_capture.setOnClickListener(SelectActivityListener);
+        report_sleeptime.setOnClickListener(SelectActivityListener);
+    }*/
 
     Button.OnClickListener SelectActivityListener = new Button.OnClickListener() {
         @Override
@@ -52,5 +52,32 @@ public class ReportFragment extends Fragment {
             }
         }
     };
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_report, container, false);
+
+        Button b1 = (Button) view.findViewById(R.id.report_capture);
+        Button b2 = (Button) view.findViewById(R.id.report_sleeptime);
+
+        b1.setOnClickListener(SelectActivityListener);
+        b2.setOnClickListener(SelectActivityListener);
+
+        return view;
+    }
+/*
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.report_capture:
+                Intent intent1 = new Intent(getActivity(), ReportCaptureActivity.class);
+                getActivity().startActivity(intent1);
+                break;
+            case R.id.report_sleeptime:
+                Intent intent2 = new Intent(getActivity(), ReportSleeptimeActivity.class);
+                getActivity().startActivity(intent2);
+                break;
+        }
+    }
+*/
 }
 

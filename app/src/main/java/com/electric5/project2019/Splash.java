@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+// TODO: 스플래시 상단바 없애기
 public class Splash extends AppCompatActivity {
 
     @Override
