@@ -1,6 +1,7 @@
 package com.electric5.project2019;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
     // 세번째 파라미터의 값이 서버로 받은 값을 리턴할 때 사용하는 타입. doinbackground의 리턴값과 일치해야
 
     public Activity activity;
+    public Context context;
     static URL url;
 
     public PostRequest(Activity activity) {
@@ -102,8 +104,9 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
             activity.startActivity(intent1);
             Toast.makeText(activity, "로그인에 성공하였습니다.", Toast.LENGTH_LONG).show();
         }
-        else if(act==3){
-            Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
+        else if(act==3){ // StreamingFragment에서 모빌 작동 시
+            // Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "작동 성공!", Toast.LENGTH_LONG).show();
         }
     }
 

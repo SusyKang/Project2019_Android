@@ -36,9 +36,11 @@ import java.util.concurrent.ExecutionException;
 public class StreamingFragment extends Fragment {
 
     private WebView video;
-    private Context context;
 
-    private int motor=0;
+    private Context context;
+    //private int act;
+
+    private int motor = 0;
 
     //@TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     //@android.support.annotation.RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
@@ -94,7 +96,9 @@ public class StreamingFragment extends Fragment {
 
         postDataParam.put("msg", "MOTORON"); // 데이터 집어넣기
 
+        ModeChange.act = 3;
         String result = new ControlRequest(getActivity()).execute(postDataParam).get();
+
 
         //결과값 받기
         JSONObject jsonObject = new JSONObject(result);
@@ -110,13 +114,14 @@ public class StreamingFragment extends Fragment {
 
     }
 
-    // 녹음 중단
+    // 모터 중단
     private void stopMotor()  {
         JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
 
         try {
             postDataParam.put("msg", "MOTOROFF"); // 데이터 집어넣기
 
+            ModeChange.act = 3;
             String result = new ControlRequest(getActivity()).execute(postDataParam).get();
 
             //결과값 받기.
