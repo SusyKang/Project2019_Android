@@ -103,7 +103,7 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
             Toast.makeText(activity, "로그인에 성공하였습니다.", Toast.LENGTH_LONG).show();
         }
         else if(act==3){
-            Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
         }
     }
 
