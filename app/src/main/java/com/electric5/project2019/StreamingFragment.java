@@ -2,6 +2,7 @@ package com.electric5.project2019;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,14 +29,14 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
-// 실시간 스트리밍 프래그먼트 -- TODO: 동작제어 기능 추가
-// controlbutton1 모빌 작동
-// controlbutton2 녹음 재생
-// controlbutton3 asmr 재생
+// 실시간 스트리밍 프래그먼트
+// controlbutton2 녹음 재생 TODO: 녹음 재생 기능 추가
+// controlbutton3 asmr 재생 TODO : ASMR 재생 추가
 // https://blog.naver.com/PostView.nhn?blogId=cosmosjs&logNo=220786475003&categoryNo=83&parentCategoryNo=0&viewDate=&currentPage=19&postListTopCurrentPage=&from=thumbnailList
 public class StreamingFragment extends Fragment {
 
     private WebView video;
+    private Context context;
 
     private int motor=0;
 
@@ -44,6 +45,8 @@ public class StreamingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_streaming, container, false);
+
+        context = container.getContext();
         //Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
 
         final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
@@ -102,13 +105,12 @@ public class StreamingFragment extends Fragment {
             //Toast.makeText(getActivity(), "모빌 작동", Toast.LENGTH_LONG).show();
             motor = 1;
         } else {
-            Toast.makeText(getActivity(), "잠시 후에 다시 시도하세요", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "잠시 후에 다시 시도하세요", Toast.LENGTH_LONG).show();
         }
 
     }
 
     // 녹음 중단
-
     private void stopMotor()  {
         JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
 
@@ -123,10 +125,10 @@ public class StreamingFragment extends Fragment {
 
             //녹음버튼처럼 녹음 유무에 따라 motor on/off 제어
             if (success.equals("true")) {
-                Toast.makeText(getActivity(), "모빌 중지", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "모빌 중지", Toast.LENGTH_LONG).show();
                 motor=0;
             } else {
-                Toast.makeText(getActivity(), "잠시 후에 다시 시도하세요", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "잠시 후에 다시 시도하세요", Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {
             Log.e("TAG", "JSONEXception");
