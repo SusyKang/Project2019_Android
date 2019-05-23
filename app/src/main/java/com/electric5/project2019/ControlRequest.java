@@ -14,8 +14,10 @@ public class ControlRequest extends PostRequest {
     @Override
     protected void onPreExecute() {
         try {
-            String ip =  "http://223.194.134.64:80/test"; // TODO: 라즈베리파이 서버 주소
-            url = new URL(ip);
+
+            String ip = activity.getResources().getString(R.string.ip_address);
+            url = new URL(ip + "/test");
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
