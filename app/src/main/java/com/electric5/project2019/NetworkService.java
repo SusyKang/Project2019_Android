@@ -16,7 +16,7 @@ import retrofit2.http.Part;
 public interface NetworkService {
 
     @Multipart
-    @POST("/upload")
+    @POST("/uploadsound")
     Call<ResponseBody> upload(@Part MultipartBody.Part file, @Part("name") RequestBody description);
    //Call<ResponseBody> upload(@Part ("file") RequestBody file, @Part("name") RequestBody description);
 }
