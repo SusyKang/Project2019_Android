@@ -48,7 +48,7 @@ public class MainFragment extends Fragment {
 
         //유저정보 받아오는 코드
         SharedPreferences info = getActivity().getSharedPreferences("id", getActivity().MODE_PRIVATE);
-        String localid = info.getString("id", "");
+        final String localid = info.getString("id", "");
         final TextView mainbabyname = (TextView) view.findViewById(R.id.mainbabyname);
         final TextView mainbyear = (TextView) view.findViewById(R.id.mainbyear);
         final TextView mainbmonth = (TextView) view.findViewById(R.id.mainbmonth);
@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
                 mainbyear.setText(jsonObject2.getString("Byear"));
                 mainbmonth.setText(jsonObject2.getString("Bmonth"));
                 mainbday.setText(jsonObject2.getString("Bday"));
-
+                saved_path = jsonObject2.getString("imgpath");
             }
         } catch (JSONException e) {
             Log.e("TAG", "JSONEXception");
@@ -167,9 +167,27 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 babyphoto.isSaveEnabled();
-                Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
+                JSONObject DataParam = new JSONObject();
 
+                try {
+                    //데이터 집어넣기
+                    DataParam.put("id", localid);
+                    DataParam.put("path", path);
 
+                    String result = new PathRequest(getActivity()).execute(DataParam).get();
+                    JSONObject jsonObject = new JSONObject(result);
+                    String success = jsonObject.getString("success");
+
+                    if (success.equals("true")) {
+                        Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
+                    }
+                } catch (JSONException e) {
+                    Log.e("TAG", "JSONEXception");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -210,7 +228,7 @@ public class MainFragment extends Fragment {
                 babyphoto.setImageBitmap(bitmapImage);
 
                 path = Utils.getActualPath(getContext(), returnUri);
-                Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
+                //Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
 
             } catch (Exception e) {
 
