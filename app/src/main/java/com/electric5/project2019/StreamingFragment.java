@@ -66,7 +66,7 @@ public class StreamingFragment extends Fragment {
                 return true;
             }
         });
-        video.loadUrl("http://223.194.133.48:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
+        video.loadUrl("http://223.194.132.29:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
 
         //모터 제어 버튼
@@ -74,8 +74,12 @@ public class StreamingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startMotor();
-                    motorctl.setText("모빌 작동 중"); // 작동 중일 때 텍스트변경
+                    if (motor ==0 ) {
+                        startMotor();
+                        motorctl.setText("모빌 작동 중"); // 작동 중일 때 텍스트변경
+                    }
+                    else
+                        stopMotor();
                 } catch (Exception e) {
                     e.printStackTrace();
                     motorctl.setText("모빌 작동"); // 기본 텍스트
@@ -90,7 +94,7 @@ public class StreamingFragment extends Fragment {
     private void startMotor() throws Exception {
         JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
 
-        stopMotor();
+        //stopMotor();
 
         postDataParam.put("msg", "MOTORON"); // 데이터 집어넣기
 
