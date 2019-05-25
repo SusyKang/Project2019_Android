@@ -1,4 +1,4 @@
-package com.example.uploadmp3.model;
+package com.electric5.project2019.model;
 
 /**
  * Created by kh on 2016. 8. 27..

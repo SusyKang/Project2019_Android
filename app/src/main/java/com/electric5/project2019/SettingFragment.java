@@ -21,7 +21,10 @@ import com.google.gson.JsonParser;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+
 import com.electric5.project2019.model.UploadResult;
+
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -51,7 +54,8 @@ public class SettingFragment extends Fragment {
 
         checkDangerousPermissions(); // 접근 권한 체크
 
-        getServerURL = "http://223.194.134.12:80";//서버 ip
+        getServerURL = "http://223.194.134.12:80"; // TODO: 라즈베리파이서버 ip
+
         //녹음 버튼
         record.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -77,6 +81,7 @@ public class SettingFragment extends Fragment {
             }
         });
 
+        //녹음 업로드 버튼
         uploadsound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

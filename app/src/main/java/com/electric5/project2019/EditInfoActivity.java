@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-//TODO: 로그인된 사용자의 정보값을 기본적으로 띄워주고 edit 버튼 누르면 수정완료
+
 public class EditInfoActivity extends Activity {
 
     EditText edit_pw, edit_pw2, editbabyname, editbirthy, editbirthm, editbirthd;

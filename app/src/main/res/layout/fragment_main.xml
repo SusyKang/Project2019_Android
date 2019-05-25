@@ -119,20 +119,33 @@
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:layout_gravity="center">
+            <Button
+                android:id="@+id/babyphotoupload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사진 등록"
+                android:layout_gravity="center_horizontal"/>
+            <Button
+                android:id="@+id/babyphotosave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사진 저장"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/babyphoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/baby"/>
-        <Button
-            android:id="@+id/babyphotoupload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="사진 등록"
-            android:layout_gravity="center_horizontal"
-            android:background="#00FF0000"/>
+
 
     </LinearLayout>
 

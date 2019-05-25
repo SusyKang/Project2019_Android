@@ -1,7 +1,17 @@
 package com.electric5.project2019;
 
+import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,38 +20,45 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.electric5.project2019.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.concurrent.ExecutionException;
 
-//TODO: Textview howold=오늘날짜-생년월일+1     // 태어난 날부터 1일
-//참고사이트 https://m.blog.naver.com/PostView.nhn?blogId=ch90486&logNo=220404510958&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+import static android.app.Activity.RESULT_OK;
+
 public class MainFragment extends Fragment {
     public MainFragment() {
-        // Required empty public constructor
     }
+
+    private Button babyphotoupload, babyphotosave;
+    ImageView babyphoto;
+
+    String path; // babyphoto 에 등록한 사진의 실제 경로
+    String saved_path; // 서버에 저장된 path를 가져와 저장하는 스트링
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         //유저정보 받아오는 코드
         SharedPreferences info = getActivity().getSharedPreferences("id", getActivity().MODE_PRIVATE);
-        String localid = info.getString("id","");
-        final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
-        final TextView mainbyear = (TextView)view.findViewById(R.id.mainbyear);
-        final TextView mainbmonth = (TextView)view.findViewById(R.id.mainbmonth);
-        final TextView mainbday = (TextView)view.findViewById(R.id.mainbday);
+        String localid = info.getString("id", "");
+        final TextView mainbabyname = (TextView) view.findViewById(R.id.mainbabyname);
+        final TextView mainbyear = (TextView) view.findViewById(R.id.mainbyear);
+        final TextView mainbmonth = (TextView) view.findViewById(R.id.mainbmonth);
+        final TextView mainbday = (TextView) view.findViewById(R.id.mainbday);
 
-        ImageView mainicon = (ImageView)view.findViewById(R.id.mainicon); // TODO: 생일날 케이크아이콘 birthday.png로 바뀜
+        ImageView mainicon = (ImageView) view.findViewById(R.id.mainicon); // TODO: 생일날 케이크아이콘 birthday.png로 바뀜
 
-        //TODO: babyphotoupload(버튼) 온클릭 > babyphoto(이미지뷰) 사진 업로드
-        // https://jeongchul.tistory.com/287
-        ImageView babyphoto = (ImageView)view.findViewById(R.id.babyphoto);
-        Button babyphotoupload = (Button)view.findViewById(R.id.babyphotoupload);
+        babyphoto = (ImageView) view.findViewById(R.id.babyphoto);
+        babyphotoupload = (Button) view.findViewById(R.id.babyphotoupload);
+        babyphotosave = (Button) view.findViewById(R.id.babyphotosave);
 
         try {
             //로그인된 사용자 정보 로드
@@ -129,6 +146,76 @@ public class MainFragment extends Fragment {
             e.printStackTrace();
         }
 */
+
+        // 사진 등록 버튼
+        babyphotoupload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                    }, 2000);
+                } else {
+                    startGallery();
+                }
+            }
+        });
+
+        // 사진 저장 버튼 - path를 서버로 업로드
+        // TODO: 서버에 path(휴대폰 속 실제 경로/ string) 저장
+        babyphotosave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                babyphoto.isSaveEnabled();
+                Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
+
+
+            }
+        });
+
+
+        //saved_path = path; // TODO: 어플 시작 시 서버에 저장된 path를 saved_path(string)에 저장하여 가져옴
+
+        if (saved_path != null) {
+            File imgFile = new File(saved_path);
+
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            babyphoto.setImageBitmap(myBitmap);
+        }
+
         return view;
     }
+
+    // 갤러리에서 사진 선택
+    private void startGallery() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(intent, 1);
+        }
+    }
+
+    // 선택한 사진의 실제 경로 가져오기
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && intent != null && intent.getData() != null) {
+            Uri returnUri = intent.getData();
+
+            try {
+                Bitmap bitmapImage = (Bitmap) MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
+                babyphoto.setImageBitmap(bitmapImage);
+
+                path = Utils.getActualPath(getContext(), returnUri);
+                Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
+
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
 }
