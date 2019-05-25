@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,6 +29,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import static android.app.Activity.RESULT_OK;
@@ -54,7 +58,7 @@ public class MainFragment extends Fragment {
         final TextView mainbmonth = (TextView) view.findViewById(R.id.mainbmonth);
         final TextView mainbday = (TextView) view.findViewById(R.id.mainbday);
 
-        ImageView mainicon = (ImageView) view.findViewById(R.id.mainicon); // TODO: 생일날 케이크아이콘 birthday.png로 바뀜
+        ImageView mainicon = (ImageView) view.findViewById(R.id.mainicon);
 
         babyphoto = (ImageView) view.findViewById(R.id.babyphoto);
         babyphotoupload = (Button) view.findViewById(R.id.babyphotoupload);
@@ -78,6 +82,21 @@ public class MainFragment extends Fragment {
                 mainbmonth.setText(jsonObject2.getString("Bmonth"));
                 mainbday.setText(jsonObject2.getString("Bday"));
                 saved_path = jsonObject2.getString("imgpath");
+                
+                // 생일 비교
+                Calendar cal = Calendar.getInstance();
+
+                int month = cal.get(Calendar.MONTH) + 1; // 0~11로 출력되므로 +1
+                int date = cal.get(Calendar.DATE);
+
+                String s_month = String.valueOf(month);
+                String s_date = String.valueOf(date);
+
+                // TODO: 기본값 달력인 메인화면아이콘이 생일이면 케이크아이콘으로 바뀜
+                if ((mainbmonth.getText().toString() == s_month) && (mainbday.getText().toString() == s_date))
+                    mainicon.setImageResource(R.drawable.birthday);
+                else
+                    mainicon.setImageResource(R.drawable.calendar);
             }
         } catch (JSONException e) {
             Log.e("TAG", "JSONEXception");
