@@ -16,7 +16,7 @@ public class ControlRequest extends PostRequest {
         try {
 
             String ip = activity.getResources().getString(R.string.ip_address);
-            url = new URL(ip + "/test");
+            url = new URL(ip + "/ctl");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
