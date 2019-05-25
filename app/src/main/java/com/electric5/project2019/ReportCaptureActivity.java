@@ -57,7 +57,7 @@ public class ReportCaptureActivity extends AppCompatActivity {
         gridView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
         // 아이템 하나 선택 시 PopUpActivity로 넘어감
-        // TODO: 인텐트로 파일명, 사진 보내기
+        // TODO: 인텐트 사용해서 PopUpActivity로 파일명, 사진 보내기
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

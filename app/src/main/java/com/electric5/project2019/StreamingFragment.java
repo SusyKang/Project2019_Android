@@ -30,9 +30,7 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 
 // 실시간 스트리밍 프래그먼트
-// controlbutton2 녹음 재생 TODO: 녹음 재생 기능 추가
 // controlbutton3 asmr 재생 TODO : ASMR 재생 추가
-// https://blog.naver.com/PostView.nhn?blogId=cosmosjs&logNo=220786475003&categoryNo=83&parentCategoryNo=0&viewDate=&currentPage=19&postListTopCurrentPage=&from=thumbnailList
 public class StreamingFragment extends Fragment {
 
     private WebView video;
@@ -47,13 +45,18 @@ public class StreamingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_streaming, container, false);
 
         context = container.getContext();
-        //Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
 
         final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
 
         if (video != null) { video.destroy(); }
 
         video = (WebView) view.findViewById(R.id.videoview);
+        video.setBackgroundColor(0); //배경색 투명
+        video.setHorizontalScrollBarEnabled(false); //가로 스크롤
+        video.setVerticalScrollBarEnabled(false);   //세로 스크롤
+        video.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY); // 스크롤 노출 타입
+        video.setScrollbarFadingEnabled(true); // 스크롤 페이딩 처리 여부
+
         video.getSettings().setBuiltInZoomControls(false);
         video.getSettings().setJavaScriptEnabled(true);
         video.getSettings().setLoadWithOverviewMode(true);
@@ -66,7 +69,7 @@ public class StreamingFragment extends Fragment {
                 return true;
             }
         });
-        video.loadUrl("http://223.194.133.48:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
+        video.loadUrl("http://223.194.132.29:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
 
         //모터 제어 버튼
@@ -74,8 +77,12 @@ public class StreamingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startMotor();
-                    motorctl.setText("모빌 작동 중"); // 작동 중일 때 텍스트변경
+                    if (motor ==0 ) {
+                        startMotor();
+                        motorctl.setText("모빌 작동 중"); // 작동 중일 때 텍스트변경
+                    }
+                    else
+                        stopMotor();
                 } catch (Exception e) {
                     e.printStackTrace();
                     motorctl.setText("모빌 작동"); // 기본 텍스트
@@ -90,7 +97,7 @@ public class StreamingFragment extends Fragment {
     private void startMotor() throws Exception {
         JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
 
-        stopMotor();
+        //stopMotor();
 
         postDataParam.put("msg", "MOTORON"); // 데이터 집어넣기
 

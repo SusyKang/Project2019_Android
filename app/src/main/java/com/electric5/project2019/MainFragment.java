@@ -36,12 +36,14 @@ import java.util.concurrent.ExecutionException;
 
 import static android.app.Activity.RESULT_OK;
 
+// TODO: babyphoto, mainicon 잘되는지 확인
 public class MainFragment extends Fragment {
     public MainFragment() {
     }
 
     private Button babyphotoupload, babyphotosave;
     ImageView babyphoto;
+    TextView tv_path;
 
     String path; // babyphoto 에 등록한 사진의 실제 경로
     String saved_path; // 서버에 저장된 path를 가져와 저장하는 스트링
@@ -64,6 +66,8 @@ public class MainFragment extends Fragment {
         babyphotoupload = (Button) view.findViewById(R.id.babyphotoupload);
         babyphotosave = (Button) view.findViewById(R.id.babyphotosave);
 
+        tv_path = (TextView) view.findViewById(R.id.tv_path);
+
         try {
             //로그인된 사용자 정보 로드
             JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
@@ -75,7 +79,6 @@ public class MainFragment extends Fragment {
             if (success.equals("true")) {
                 String data = jsonObject.getString("data");
                 JSONObject jsonObject2 = new JSONObject(data);
-//                String babyname = jsonObject2.getString("baby");
 
                 mainbabyname.setText(jsonObject2.getString("baby"));
                 mainbyear.setText(jsonObject2.getString("Byear"));
@@ -92,7 +95,7 @@ public class MainFragment extends Fragment {
                 String s_month = String.valueOf(month);
                 String s_date = String.valueOf(date);
 
-                // TODO: 기본값 달력인 메인화면아이콘이 생일이면 케이크아이콘으로 바뀜
+                // 기본값 달력인 메인화면아이콘이 생일이면 케이크아이콘으로 바뀜
                 if ((mainbmonth.getText().toString() == s_month) && (mainbday.getText().toString() == s_date))
                     mainicon.setImageResource(R.drawable.birthday);
                 else
@@ -180,8 +183,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        // 사진 저장 버튼 - path를 서버로 업로드
-        // TODO: 서버에 path(휴대폰 속 실제 경로/ string) 저장
+        // 사진 저장 버튼 - path(휴대폰 속 실제 경로)를 서버로 업로드
         babyphotosave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,6 +201,7 @@ public class MainFragment extends Fragment {
 
                     if (success.equals("true")) {
                         Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
+                        tv_path.setText(path);
                     }
                 } catch (JSONException e) {
                     Log.e("TAG", "JSONEXception");
@@ -211,13 +214,15 @@ public class MainFragment extends Fragment {
         });
 
 
-        //saved_path = path; // TODO: 어플 시작 시 서버에 저장된 path를 saved_path(string)에 저장하여 가져옴
+        //saved_path = path;
 
+        // 어플 시작 시 서버에 저장된 path를 saved_path에 저장하여 가져옴
         if (saved_path != null) {
             File imgFile = new File(saved_path);
 
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             babyphoto.setImageBitmap(myBitmap);
+            tv_path.setText(saved_path);
         }
 
         return view;
@@ -247,7 +252,6 @@ public class MainFragment extends Fragment {
                 babyphoto.setImageBitmap(bitmapImage);
 
                 path = Utils.getActualPath(getContext(), returnUri);
-                //Toast.makeText(getContext(), path, Toast.LENGTH_LONG).show(); // 사진 가져온 경로 토스트
 
             } catch (Exception e) {
 
