@@ -47,7 +47,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/smartcradle"
             android:background = "#00FF0000"
-            android:text="ASMR 재생"
+            android:text="전원 켜기"
             android:id="@+id/controlbutton3"/>
 
     </LinearLayout>

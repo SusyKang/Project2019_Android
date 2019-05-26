@@ -30,7 +30,8 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 
 // 실시간 스트리밍 프래그먼트
-// controlbutton3 asmr 재생 TODO : ASMR 재생 추가
+//TODO :  controlbutton2 녹음재생 제어
+//TODO :  controlbutton3 전원onoff 
 public class StreamingFragment extends Fragment {
 
     private WebView video;
@@ -45,8 +46,6 @@ public class StreamingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_streaming, container, false);
 
         context = container.getContext();
-
-        final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
 
         if (video != null) { video.destroy(); }
 
@@ -72,21 +71,52 @@ public class StreamingFragment extends Fragment {
         video.loadUrl("http://223.194.132.29:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
 
+        final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
+        final Button recordplayctl = (Button) view.findViewById(R.id.controlbutton2);
+        final Button powerctl = (Button) view.findViewById(R.id.controlbutton3);
+
+
         //모터 제어 버튼
         motorctl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    if (motor ==0 ) {
+                    if (motor == 0 ) { // 모터가 작동 중이지 않으면 작동 시작
                         startMotor();
                         motorctl.setText("모빌 작동 중"); // 작동 중일 때 텍스트변경
                     }
-                    else
+                    else // 모터가 작동 중이면 작동 중지
                         stopMotor();
                 } catch (Exception e) {
                     e.printStackTrace();
                     motorctl.setText("모빌 작동"); // 기본 텍스트
                 }
+            }
+        });
+
+        //녹음재생 제어 버튼
+        //TODO: 서버에 있는 음성파일 라즈베리파이로 출력
+        //서버에 녹음파일 있는지 체크
+        //파일 있으면 모터처럼 현재 실행 중인지 체크
+        // 재생 중이면 >> 끄고 recordplayctl.setText("녹음 재생");
+        // 재생 안하고 있으면 >> 켜고 recordplayctl.setText("녹음 재생 중");
+        //파일 없으면 토스트  Toast.makeText(getContext(),"음성을 먼저 녹음하세요",Toast.LENGTH_SHORT).show();
+        recordplayctl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //전원 onoff 제어 버튼
+        //TODO: 라즈베리파이 서비스 시작 on/off
+        //서비스 실행 중인지 체크 후
+        //on 상태면 중지 powerctl.setText("전원 끄기");
+        //off 상태면 시작 (처음 앱 실행 시 off 상태) powerctl.setText("전원 켜기");
+        powerctl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
