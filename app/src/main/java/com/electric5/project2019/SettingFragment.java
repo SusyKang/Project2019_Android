@@ -39,7 +39,7 @@ public class SettingFragment extends Fragment {
     ProgressDialog asyncDialog;
     private Button uploadsound;
     String getServerURL = "";
-    String getmp3URL="/sdcard/Music/record.wav";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
+    String getmp3URL="/sdcard/Music/record.mp3";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
 
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
