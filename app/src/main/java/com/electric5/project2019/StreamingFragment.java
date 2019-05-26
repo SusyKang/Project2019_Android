@@ -31,7 +31,7 @@ import java.util.concurrent.ExecutionException;
 
 // 실시간 스트리밍 프래그먼트
 //TODO :  controlbutton2 녹음재생 제어
-//TODO :  controlbutton3 전원onoff 
+//TODO :  controlbutton3 전원onoff
 public class StreamingFragment extends Fragment {
 
     private WebView video;
@@ -64,7 +64,12 @@ public class StreamingFragment extends Fragment {
         video.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+                if (android.os.Build.VERSION.SDK_INT < 19) {
+                    view.loadUrl(url);
+                } else {
+                    view.evaluateJavascript(url,null);
+                }
+                //view.loadUrl(url);
                 return true;
             }
         });
