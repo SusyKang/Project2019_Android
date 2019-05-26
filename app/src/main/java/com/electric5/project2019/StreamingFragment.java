@@ -85,11 +85,12 @@ public class StreamingFragment extends Fragment {
                         startMotor();
                         motorctl.setText("모빌 작동 중"); // 작동 중일 때 텍스트변경
                     }
-                    else // 모터가 작동 중이면 작동 중지
+                    else {// 모터가 작동 중이면 작동 중지
                         stopMotor();
+                        motorctl.setText("모빌 작동"); // 기본 텍스트
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    motorctl.setText("모빌 작동"); // 기본 텍스트
                 }
             }
         });
