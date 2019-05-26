@@ -53,9 +53,9 @@ public class SettingFragment extends Fragment {
         uploadsound= (Button)view.findViewById(R.id.recordupload);
 
         checkDangerousPermissions(); // 접근 권한 체크
-
-        getServerURL = "http://223.194.132.29:80/uploadsound"; // TODO: 라즈베리파이서버 ip
-
+        
+        getServerURL = getContext().getResources().getString(R.string.ip_address);//서버 ip
+        
         //녹음 버튼
         record.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
