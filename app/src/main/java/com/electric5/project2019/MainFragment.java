@@ -46,7 +46,7 @@ public class MainFragment extends Fragment {
     TextView tv_path;
 
     String path; // babyphoto 에 등록한 사진의 실제 경로
-    String saved_path; // 서버에 저장된 path를 가져와 저장하는 스트링
+    String saved_path = null; // 서버에 저장된 path를 가져와 저장하는 스트링
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,7 +85,12 @@ public class MainFragment extends Fragment {
                 mainbmonth.setText(jsonObject2.getString("Bmonth"));
                 mainbday.setText(jsonObject2.getString("Bday"));
                 saved_path = jsonObject2.getString("imgpath");
-                
+
+                File imgFile = new File(saved_path);
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                babyphoto.setImageBitmap(myBitmap);
+                tv_path.setText(saved_path);
+
                 // 생일 비교
                 Calendar cal = Calendar.getInstance();
 
@@ -213,7 +218,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-
+/*
         //saved_path = path;
 
         // 어플 시작 시 서버에 저장된 path를 saved_path에 저장하여 가져옴
@@ -224,7 +229,7 @@ public class MainFragment extends Fragment {
             babyphoto.setImageBitmap(myBitmap);
             tv_path.setText(saved_path);
         }
-
+*/
         return view;
     }
 
