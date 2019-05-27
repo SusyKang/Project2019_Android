@@ -39,12 +39,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="푸시 알림"/>
+                    android:text="진동 알림"/>
+
                 <Switch
+                    android:id="@+id/vibswitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:id="@+id/pushswitch"/>
+                    android:layout_marginLeft="120dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -59,7 +60,7 @@
                 <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
+                    android:layout_marginLeft="120dp"
                     android:id="@+id/soundswitch"/>
             </LinearLayout>
 
