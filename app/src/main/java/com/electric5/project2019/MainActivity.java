@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.button0:
                         fragmentTransaction.replace(R.id.container, mainFragment);
                         fragmentTransaction.commit();
-                        b0.setBackgroundColor(R.color.colorselectedbtn);
+                        b0.setBackgroundColor(R.color.colorselected);
                         b1.setBackgroundColor(R.color.colorbg);
                         b2.setBackgroundColor(R.color.colorbg);
                         b3.setBackgroundColor(R.color.colorbg);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.container, streamingFragment);
                         fragmentTransaction.commit();
                         b0.setBackgroundColor(R.color.colorbg);
-                        b1.setBackgroundColor(R.color.colorselectedbtn);
+                        b1.setBackgroundColor(R.color.colorselected);
                         b2.setBackgroundColor(R.color.colorbg);
                         b3.setBackgroundColor(R.color.colorbg);
                         break;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                         b0.setBackgroundColor(R.color.colorbg);
                         b1.setBackgroundColor(R.color.colorbg);
-                        b2.setBackgroundColor(R.color.colorselectedbtn);
+                        b2.setBackgroundColor(R.color.colorselected);
                         b3.setBackgroundColor(R.color.colorbg);
                         break;
                     case R.id.button3:
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         b0.setBackgroundColor(R.color.colorbg);
                         b1.setBackgroundColor(R.color.colorbg);
                         b2.setBackgroundColor(R.color.colorbg);
-                        b3.setBackgroundColor(R.color.colorselectedbtn);
+                        b3.setBackgroundColor(R.color.colorselected);
                         break;
                 }
             }
