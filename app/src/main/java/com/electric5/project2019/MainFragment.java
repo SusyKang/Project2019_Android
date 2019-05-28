@@ -41,6 +41,7 @@ public class MainFragment extends Fragment {
     public MainFragment() {
     }
 
+    TextView howold;
     private Button babyphotoupload, babyphotosave;
     ImageView babyphoto;
     TextView tv_path;
@@ -59,6 +60,7 @@ public class MainFragment extends Fragment {
         final TextView mainbyear = (TextView) view.findViewById(R.id.mainbyear);
         final TextView mainbmonth = (TextView) view.findViewById(R.id.mainbmonth);
         final TextView mainbday = (TextView) view.findViewById(R.id.mainbday);
+        howold = (TextView) view.findViewById(R.id.howold);
 
         ImageView mainicon = (ImageView) view.findViewById(R.id.mainicon);
 
@@ -84,6 +86,15 @@ public class MainFragment extends Fragment {
                 mainbyear.setText(jsonObject2.getString("Byear"));
                 mainbmonth.setText(jsonObject2.getString("Bmonth"));
                 mainbday.setText(jsonObject2.getString("Bday"));
+
+                // 디데이날짜 계산
+                //https://nota.tistory.com/49
+                int byear = Integer.parseInt(mainbyear.getText().toString());
+                int bmonth = Integer.parseInt(mainbmonth.getText().toString());
+                int bday = Integer.parseInt(mainbday.getText().toString());
+
+                howold.setText(calculatehowold(byear, bmonth, bday));
+
                 saved_path = jsonObject2.getString("imgpath");
 
                 File imgFile = new File(saved_path);
@@ -113,66 +124,6 @@ public class MainFragment extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-     /*
-        try {
-
-            JSONObject postDataParam = new JSONObject();
-            postDataParam.put("id", info.getString("id",""));
-
-            String result = new MyinfoRequest(getActivity()).execute(postDataParam).get();
-
-            //결과값 받기.
-            JSONObject jsonObject = new JSONObject(result);
-            JSONArray dataArray = jsonObject.getJSONArray("data");
-
-            if (result!=null) {
-                ArrayList<String> data = new ArrayList<String>();
-
-                for(int i=0; i<dataArray.length(); i++) {
-                    JSONObject jsonObject2 = dataArray.getJSONObject(i);
-
-                    data.add(jsonObject2.getString("baby"));
-                }
-                final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
-                mainbabyname.setText((CharSequence) data);
-
-            } else {
-                final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
-                mainbabyname.setText("ttt");            }
-            /*
-            JSONObject jsonObject = new JSONObject(result);
-            JSONArray dataArraye = jsonObject.getJSONArray("data");
-
-            String babyname = dataArraye.getString(1);
-            final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
-            mainbabyname.setText(babyname);
-*/
-            /*
-            String result = new MyinfoRequest(getActivity()).execute(local).get();
-
-            if (result==null) {
-                final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
-                mainbabyname.setText(local[0]);
-            } else {
-                JSONObject jsonObject = new JSONObject(result);
-                String data = jsonObject.getString("data");
-                JSONObject jsonObject2 = new JSONObject(data);
-                String babyname = jsonObject2.getString("baby");
-
-                final TextView mainbabyname = (TextView)view.findViewById(R.id.mainbabyname);
-                mainbabyname.setText(babyname);
-            }
-
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-*/
 
         // 사진 등록 버튼
         babyphotoupload.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +182,27 @@ public class MainFragment extends Fragment {
         }
 */
         return view;
+    }
+
+    // 태어난 지 며칠 됐는지 계산하는 함수
+    private int calculatehowold(int year, int month, int day) {
+
+        try {
+            Calendar today = Calendar.getInstance(); //현재 오늘 날짜
+            Calendar bday = Calendar.getInstance();
+
+            bday.set(year,month,day);// D-day의 날짜를 입력합니다.
+
+            long b_day = bday.getTimeInMillis()/86400000;
+            long t_day = today.getTimeInMillis()/86400000;
+
+            long count = t_day - b_day;
+
+            return (int) count + 1; // 날짜는 하루 + 시켜줘야함
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     // 갤러리에서 사진 선택

@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
         String vib_state = sf.getString("vib",""); //text라는 key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
         String beep_state = sf.getString("beep","");
 
-        Toast.makeText(this, "vib "+vib_state,Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "beep "+beep_state,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "vib "+vib_state, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "beep "+beep_state, Toast.LENGTH_LONG).show();
 
         // TODO: 라즈베리가 위험상황에 보낸 json 받아서 진동/소리 알림 실행
         if (vib_state.equals("on") && beep_state.equals("on")){ //진동 알림 on & 소리 알림 on일 때
