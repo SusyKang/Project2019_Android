@@ -54,34 +54,18 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.button0:
                         fragmentTransaction.replace(R.id.container, mainFragment);
                         fragmentTransaction.commit();
-                        b0.setBackgroundColor(R.color.colorselectedbtn);
-                        b1.setBackgroundColor(R.color.colorbg);
-                        b2.setBackgroundColor(R.color.colorbg);
-                        b3.setBackgroundColor(R.color.colorbg);
                         break;
                     case R.id.button1:
                         fragmentTransaction.replace(R.id.container, streamingFragment);
                         fragmentTransaction.commit();
-                        b0.setBackgroundColor(R.color.colorbg);
-                        b1.setBackgroundColor(R.color.colorselectedbtn);
-                        b2.setBackgroundColor(R.color.colorbg);
-                        b3.setBackgroundColor(R.color.colorbg);
                         break;
                     case R.id.button2:
                         fragmentTransaction.replace(R.id.container, reportFragment);
                         fragmentTransaction.commit();
-                        b0.setBackgroundColor(R.color.colorbg);
-                        b1.setBackgroundColor(R.color.colorbg);
-                        b2.setBackgroundColor(R.color.colorselectedbtn);
-                        b3.setBackgroundColor(R.color.colorbg);
                         break;
                     case R.id.button3:
                         fragmentTransaction.replace(R.id.container, settingFragment);
                         fragmentTransaction.commit();
-                        b0.setBackgroundColor(R.color.colorbg);
-                        b1.setBackgroundColor(R.color.colorbg);
-                        b2.setBackgroundColor(R.color.colorbg);
-                        b3.setBackgroundColor(R.color.colorselectedbtn);
                         break;
                 }
             }
