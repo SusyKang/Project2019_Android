@@ -89,7 +89,7 @@ public class MainFragment extends Fragment {
                 // 디데이날짜 계산
                 //https://nota.tistory.com/49
                 int byear = Integer.parseInt(mainbyear.getText().toString());
-                int bmonth = Integer.parseInt(mainbmonth.getText().toString());
+                int bmonth = Integer.parseInt(mainbmonth.getText().toString())-1;
                 int bday = Integer.parseInt(mainbday.getText().toString());
 
                 howold.setText(""+calculatehowold(byear, bmonth, bday));

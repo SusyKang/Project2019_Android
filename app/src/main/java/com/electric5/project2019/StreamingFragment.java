@@ -68,7 +68,7 @@ public class StreamingFragment extends Fragment {
                 return true;
             }
         });
-        video.loadUrl("http://223.194.132.29:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
+        video.loadUrl("http://223.194.134.36:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
 
         final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);

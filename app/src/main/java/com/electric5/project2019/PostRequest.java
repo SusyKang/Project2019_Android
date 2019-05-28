@@ -93,7 +93,7 @@ public class PostRequest extends AsyncTask <JSONObject, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if(act==1) { // 로그인 액티비티로
-            Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity, result, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(activity,LoginActivity.class);
             activity.startActivity(intent);
         }
