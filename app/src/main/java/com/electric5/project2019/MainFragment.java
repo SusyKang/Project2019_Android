@@ -41,7 +41,6 @@ public class MainFragment extends Fragment {
     public MainFragment() {
     }
 
-    TextView howold;
     private Button babyphotoupload, babyphotosave;
     ImageView babyphoto;
     TextView tv_path;
@@ -60,7 +59,7 @@ public class MainFragment extends Fragment {
         final TextView mainbyear = (TextView) view.findViewById(R.id.mainbyear);
         final TextView mainbmonth = (TextView) view.findViewById(R.id.mainbmonth);
         final TextView mainbday = (TextView) view.findViewById(R.id.mainbday);
-        howold = (TextView) view.findViewById(R.id.howold);
+        TextView howold = (TextView) view.findViewById(R.id.howold);
 
         ImageView mainicon = (ImageView) view.findViewById(R.id.mainicon);
 
@@ -93,7 +92,7 @@ public class MainFragment extends Fragment {
                 int bmonth = Integer.parseInt(mainbmonth.getText().toString());
                 int bday = Integer.parseInt(mainbday.getText().toString());
 
-                howold.setText(calculatehowold(byear, bmonth, bday));
+                howold.setText(""+calculatehowold(byear, bmonth, bday));
 
                 saved_path = jsonObject2.getString("imgpath");
 
