@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffdc72</color>
-    <color name="colorPrimaryDark">#ffd34a</color>
+    <color name="colorPrimary">#FFF0C2</color>
+    <color name="colorPrimaryDark">#FFE080</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colorbg">#FFF2CC</color>
+    <color name="colorbg">#FFF9EB</color>
+
     <color name="colorselected">#FFACAC</color>
     <color name="transparent">#00FF0000</color>
     <color name="colorfortext">#666051</color>
     <color name="colorlistbg">#FFD3D3</color>
     <color name="colorlistbg2">#FFF9E6</color>
 
+    <color name="loginbtn">#FFDECC</color>
+    <color name="popuptitle">#FFEEEE</color>
+    <color name="popupok">#FFD3D3</color>
+    <color name="mainbtn">#FFDECC</color>
 </resources>

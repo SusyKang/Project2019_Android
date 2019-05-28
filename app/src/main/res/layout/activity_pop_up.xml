@@ -17,11 +17,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="파일 명"
             android:hint="파일 명"
             android:textSize="20dp"
-            android:textColor="#FFFFFF"
-            android:background="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
+            android:textStyle="bold"
+            android:background="@color/popuptitle"
             android:id="@+id/popup_filename"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="OK"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/popupok"
         android:onClick="okbtn"
         android:id="@+id/popup_ok"
         tools:ignore="OnClick" />
