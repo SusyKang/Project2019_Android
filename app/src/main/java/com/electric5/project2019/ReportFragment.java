@@ -42,10 +42,12 @@ public class ReportFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.report_capture:
+                    ModeChange.act=3;
                     Intent intent1 = new Intent(getActivity(), ReportCaptureActivity.class);
                     getActivity().startActivity(intent1);
                     break;
                 case R.id.report_sleeptime:
+                    ModeChange.act=3;
                     Intent intent2 = new Intent(getActivity(), ReportSleeptimeActivity.class);
                     getActivity().startActivity(intent2);
                     break;
