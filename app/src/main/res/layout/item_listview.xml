@@ -6,21 +6,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_weight="2"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/item_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="item_date (날짜)"
-        android:textColor="@color/colorAccent"
+        android:text="item_date (날짜)"
+        android:textStyle="bold"
+        android:textColor="@color/colorselected"
         android:textSize="20dp" />
     <TextView
         android:id="@+id/item_sleeptime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="item_sleeptime (수면 시간)"
-        android:textColor="@color/colorPrimary"
+        android:text="item_sleeptime (수면 시간)"
+        android:textColor="@color/colorfortext"
         android:textSize="30dp" />
 
 </LinearLayout>

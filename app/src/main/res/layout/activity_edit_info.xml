@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg"
+    android:background="@color/colorbg"
     tools:contect=".EditInfoActivity">
 
     <TextView
@@ -15,7 +15,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="내 정보 수정"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textColor="@color/colorfortext"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PW 수정"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
@@ -56,16 +57,14 @@
         </LinearLayout>
 
 
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="기본 정보"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/editbabynameinput"
             android:layout_width="200dp"
@@ -101,7 +100,7 @@
             android:layout_marginRight="10dp"
             android:text="생일"
             android:textSize="20dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
             android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -160,6 +159,6 @@
         android:layout_gravity="center"
         android:text="Edit"
         android:id="@+id/editbutton"
-        android:background="#00ff0000" />
+        android:background="@color/transparent" />
 
 </LinearLayout>

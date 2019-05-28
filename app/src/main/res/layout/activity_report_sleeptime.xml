@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg"
+    android:background="@color/colorbg"
     tools:context=".ReportSleeptimeActivity">
 
     <TextView
@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="수면 시간 기록 보기"
         android:textSize="30dp"
+        android:textColor="@color/colorfortext"
         android:gravity="center"
         android:layout_margin="20dp"/>
     <ListView

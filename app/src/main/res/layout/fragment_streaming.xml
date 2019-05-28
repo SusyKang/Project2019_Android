@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/mobile"
-            android:background = "#00FF0000"
+            android:background="@color/transparent"
             android:text="모빌 작동"
             android:id="@+id/controlbutton1"/>
 
@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/recordplay"
-            android:background = "#00FF0000"
+            android:background="@color/transparent"
             android:text="녹음 재생"
             android:id="@+id/controlbutton2"/>
 
@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/smartcradle"
-            android:background = "#00FF0000"
+            android:background="@color/transparent"
             android:text="전원 켜기"
             android:id="@+id/controlbutton3"/>
 

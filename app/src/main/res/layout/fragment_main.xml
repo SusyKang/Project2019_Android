@@ -130,12 +130,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사진 등록"
+                android:background="@color/colorPrimaryDark"
                 android:layout_gravity="center_horizontal"/>
             <Button
                 android:id="@+id/babyphotosave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사진 저장"
+                android:background="@color/colorPrimaryDark"
                 android:layout_gravity="center_horizontal"/>
         </LinearLayout>
 

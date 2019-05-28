@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg"
+    android:background="@color/colorbg"
     tools:contect=".JoinActivity">
 
     <TextView
@@ -15,7 +15,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="회원 가입"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:textColor="@color/colorfortext"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ID/PW 설정"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="기본 정보"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
             android:textSize="20dp"
             android:textStyle="bold"/>
         <EditText
@@ -107,7 +108,7 @@
             android:layout_marginRight="10dp"
             android:text="생일"
             android:textSize="20dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorfortext"
             android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -166,6 +167,6 @@
         android:layout_gravity="center"
         android:text="Join us"
         android:id="@+id/joinbutton2"
-        android:background="#00ff0000" />
+        android:background="@color/transparent" />
 
 </LinearLayout>

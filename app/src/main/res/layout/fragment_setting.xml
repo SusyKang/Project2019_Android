@@ -10,13 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="환경 설정"
-            android:textSize="30dp"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,21 +77,21 @@
                     android:layout_height="wrap_content"
                     android:text="녹음하기"
                     android:drawableTop="@drawable/record"
-                    android:background="#00FF0000"
+                    android:background="@color/transparent"
                     android:id="@+id/record"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="녹음 재생"
                     android:drawableTop="@drawable/recordplay"
-                    android:background="#00FF0000"
+                    android:background="@color/transparent"
                     android:id="@+id/recordplay"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="녹음 업로드"
                     android:drawableTop="@drawable/upload"
-                    android:background="#00FF0000"
+                    android:background="@color/transparent"
                     android:id="@+id/recordupload"/>
             </LinearLayout>
 

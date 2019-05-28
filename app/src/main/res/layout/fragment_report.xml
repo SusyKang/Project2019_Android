@@ -12,7 +12,7 @@
         android:text="위기 상황 캡쳐 보기"
         android:padding="50dp"
         android:drawableTop="@drawable/document"
-        android:background="#00FF0000"/>
+        android:background="@color/transparent"/>
 
 
     <Button
@@ -23,7 +23,7 @@
         android:padding="50dp"
         android:layout_marginTop="30dp"
         android:drawableTop="@drawable/smartcradle"
-        android:background="#00FF0000"/>
+        android:background="@color/transparent"/>
 
 </LinearLayout>
 

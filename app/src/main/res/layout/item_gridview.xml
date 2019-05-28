@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:hint="파일 명"
+        android:textColor="@color/colorfortext"
         android:textSize="20dp" />
 
 </LinearLayout>

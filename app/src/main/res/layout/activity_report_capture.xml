@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/bg"
+    android:background="@color/colorbg"
     tools:context=".ReportCaptureActivity">
 
     <TextView
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="위기 상황 캡쳐 보기"
         android:textSize="30dp"
+        android:textColor="@color/colorfortext"
         android:gravity="center"
         android:layout_margin="20dp"/>
     <GridView
