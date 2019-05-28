@@ -1,5 +1,6 @@
 package com.electric5.project2019;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button b0 = (Button) findViewById(R.id.button0);
-        Button b1 = (Button) findViewById(R.id.button1);
-        Button b2 = (Button) findViewById(R.id.button2);
-        Button b3 = (Button) findViewById(R.id.button3);
+        final Button b0 = (Button) findViewById(R.id.button0);
+        final Button b1 = (Button) findViewById(R.id.button1);
+        final Button b2 = (Button) findViewById(R.id.button2);
+        final Button b3 = (Button) findViewById(R.id.button3);
 
 
         final MainFragment mainFragment = new MainFragment();
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
                 final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -52,18 +54,34 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.button0:
                         fragmentTransaction.replace(R.id.container, mainFragment);
                         fragmentTransaction.commit();
+                        b0.setBackgroundColor(R.color.colorselectedbtn);
+                        b1.setBackgroundColor(R.color.transparent);
+                        b2.setBackgroundColor(R.color.transparent);
+                        b3.setBackgroundColor(R.color.transparent);
                         break;
                     case R.id.button1:
                         fragmentTransaction.replace(R.id.container, streamingFragment);
                         fragmentTransaction.commit();
+                        b0.setBackgroundColor(R.color.transparent);
+                        b1.setBackgroundColor(R.color.colorselectedbtn);
+                        b2.setBackgroundColor(R.color.transparent);
+                        b3.setBackgroundColor(R.color.transparent);
                         break;
                     case R.id.button2:
                         fragmentTransaction.replace(R.id.container, reportFragment);
                         fragmentTransaction.commit();
+                        b0.setBackgroundColor(R.color.transparent);
+                        b1.setBackgroundColor(R.color.transparent);
+                        b2.setBackgroundColor(R.color.colorselectedbtn);
+                        b3.setBackgroundColor(R.color.transparent);
                         break;
                     case R.id.button3:
                         fragmentTransaction.replace(R.id.container, settingFragment);
                         fragmentTransaction.commit();
+                        b0.setBackgroundColor(R.color.transparent);
+                        b1.setBackgroundColor(R.color.transparent);
+                        b2.setBackgroundColor(R.color.transparent);
+                        b3.setBackgroundColor(R.color.colorselectedbtn);
                         break;
                 }
             }
