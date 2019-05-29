@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-// 참고1-volley 사용 https://www.thetechnologyupdates.com/volley-network-image-loader-to-manage-your-gridview-images/
 // 라즈베리파이가 보내준 위기상황 캡쳐 불러오기
 public class ReportCaptureActivity extends AppCompatActivity {
 
