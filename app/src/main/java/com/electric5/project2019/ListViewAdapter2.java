@@ -4,27 +4,27 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
-class ReportSleepTime {
-    String item_date; // text
-    String item_sleeptime; // text
-    ReportSleepTime(String date, String sleeptime) { item_date = date; item_sleeptime = sleeptime; }
+class ReportCapture {
+    String item_datetime; // text
+    String item_capture_path; // text
+    ReportCapture(String datetime, String capturepath) { item_datetime = datetime; item_capture_path = capturepath; }
 }
 
-// 수면 시간 불러오는 어댑터
-//https://medium.com/android-develop-android/android%EA%B0%9C%EB%B0%9C-5-listview%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A7%8C%EB%93%A4%EA%B8%B0-215b9693d33b
-public class ListViewAdapter extends BaseAdapter {
+// 캡쳐 파일 불러오는 어댑터
+public class ListViewAdapter2 extends BaseAdapter {
     private LayoutInflater inflater;
     private Context mContext;
     private int mResource;
-    private ArrayList<ReportSleepTime> mItems = new ArrayList<ReportSleepTime>();
+    private ArrayList<ReportCapture> mItems = new ArrayList<ReportCapture>();
 
-    public ListViewAdapter(Context context, int layout, ArrayList<ReportSleepTime> datas){
+    public ListViewAdapter2(Context context, int layout, ArrayList<ReportCapture> datas){
         mContext = context;
         mItems = datas;
         mResource = layout;
@@ -45,13 +45,13 @@ public class ListViewAdapter extends BaseAdapter {
             convertView=inflater.inflate(mResource,parent,false);
         }
 
-        ReportSleepTime reportSleepTime = mItems.get(position);
+        ReportCapture reportCapture = mItems.get(position);
 
-        TextView item_date = (TextView)convertView.findViewById(R.id.item_date);
-        TextView item_sleeptime = (TextView)convertView.findViewById(R.id.item_sleeptime);
+        TextView item_datetime = (TextView)convertView.findViewById(R.id.item_datetime);
+        WebView item_capture = (WebView) convertView.findViewById(R.id.item_capture);
 
-        item_date.setText(mItems.get(position).item_date);
-        item_sleeptime.setText(mItems.get(position).item_sleeptime);
+        item_datetime.setText(mItems.get(position).item_datetime);
+        item_capture.loadUrl(mItems.get(position).item_capture_path);
 
         return convertView;
     }

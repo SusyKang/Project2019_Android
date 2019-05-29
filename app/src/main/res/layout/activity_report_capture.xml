@@ -15,17 +15,10 @@
         android:textColor="@color/colorfortext"
         android:gravity="center"
         android:layout_margin="20dp"/>
-    <GridView
-        android:id="@+id/gridview"
+    <ListView
+        android:id="@+id/listview2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:orientation="vertical"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>
 
 
