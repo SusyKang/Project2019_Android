@@ -73,7 +73,6 @@ public class StreamingFragment extends Fragment {
 
         final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
         final Button recordplayctl = (Button) view.findViewById(R.id.controlbutton2);
-        final Button powerctl = (Button) view.findViewById(R.id.controlbutton3);
 
 
         //모터 제어 버튼
@@ -103,18 +102,6 @@ public class StreamingFragment extends Fragment {
         // 재생 안하고 있으면 >> 켜고 recordplayctl.setText("녹음 재생 중");
         //파일 없으면 토스트  Toast.makeText(getContext(),"음성을 먼저 녹음하세요",Toast.LENGTH_SHORT).show();
         recordplayctl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        //전원 onoff 제어 버튼
-        //TODO: 라즈베리파이 서비스 시작 on/off
-        //서비스 실행 중인지 체크 후
-        //on 상태면 중지 powerctl.setText("전원 끄기");
-        //off 상태면 시작 (처음 앱 실행 시 off 상태) powerctl.setText("전원 켜기");
-        powerctl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
