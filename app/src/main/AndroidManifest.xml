@@ -32,10 +32,6 @@
         <activity android:name=".ModeChange" />
         <activity android:name=".ReportSleeptimeActivity"/>
         <activity android:name=".ReportCaptureActivity" />
-        <activity
-            android:name=".PopUpActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/popupTheme" />
     </application>
 
 </manifest>

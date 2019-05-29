@@ -30,6 +30,8 @@ public class ListViewAdapter2 extends BaseAdapter {
     private int mResource;
     private ArrayList<ReportCapture> mItems = new ArrayList<ReportCapture>();
 
+    String ip = mContext.getResources().getString(R.string.ip_address);
+
     public ListViewAdapter2(Context context, int layout, ArrayList<ReportCapture> datas){
         mContext = context;
         mItems = datas;
@@ -78,7 +80,7 @@ public class ListViewAdapter2 extends BaseAdapter {
 
         item_datetime.setText(mItems.get(position).item_datetime);
 
-        String capture_path = "http://223.194.130.198:80/uploads/" + mItems.get(position).item_capture_name; //TODO;라즈베리아이피
+        String capture_path = ip + "/uploads/" + mItems.get(position).item_capture_name;
         item_capture.loadUrl(capture_path);
 
         return convertView;

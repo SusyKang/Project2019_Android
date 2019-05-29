@@ -15,11 +15,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-// TODO: 라즈베리파이가 보내준 위기상황 캡쳐 불러오기
 // 참고1-volley 사용 https://www.thetechnologyupdates.com/volley-network-image-loader-to-manage-your-gridview-images/
-// 참고2 http://www.masterqna.com/android/7965/%EC%84%9C%EB%B2%84%EC%97%90-%EC%9E%88%EB%8A%94-db%EC%97%90%EC%84%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%A0%95%EB%B3%B4%EB%A5%BC-%EB%B6%88%EB%9F%AC%EC%99%80%EC%84%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%B7%B0%EC%97%90-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0-%EC%A7%88%EB%AC%B8
+// 라즈베리파이가 보내준 위기상황 캡쳐 불러오기
 public class ReportCaptureActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
