@@ -246,6 +246,7 @@ public class SettingFragment extends Fragment {
                         String result = example.result;
 
                         if (result.equals("success")) {
+                            ModeChange.act = 3;
                             Toast.makeText(getContext(), "업로드 성공!!!!", Toast.LENGTH_SHORT).show();
                         }
 
@@ -256,6 +257,7 @@ public class SettingFragment extends Fragment {
 
 
                 } else {
+                    ModeChange.act = 3;
                     Toast.makeText(getContext(), "업로드 실패!!!!", Toast.LENGTH_SHORT).show();
                 }
 
