@@ -51,7 +51,14 @@ public class ListViewAdapter extends BaseAdapter {
         TextView item_sleeptime = (TextView)convertView.findViewById(R.id.item_sleeptime);
 
         item_date.setText(mItems.get(position).item_date);
-        item_sleeptime.setText(mItems.get(position).item_sleeptime + "초");
+
+        String sleeptime = mItems.get(position).item_sleeptime;
+        int int_sleeptime = Integer.parseInt(sleeptime);
+        int hour = int_sleeptime / 3600;
+        int minute = (int_sleeptime % 3600)/ 60;
+        int second = (int_sleeptime % 3600) % 60;
+
+        item_sleeptime.setText(hour+"시간 "+minute+"분 "+second+"초");
 
         return convertView;
     }
