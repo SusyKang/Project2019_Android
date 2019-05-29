@@ -30,8 +30,6 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 
 // 실시간 스트리밍 프래그먼트
-//TODO :  controlbutton2 녹음재생 제어
-//TODO :  controlbutton3 전원onoff 
 public class StreamingFragment extends Fragment {
 
     private WebView video;
@@ -68,6 +66,7 @@ public class StreamingFragment extends Fragment {
                 return true;
             }
         });
+
         video.loadUrl("http://223.194.134.116:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
 
