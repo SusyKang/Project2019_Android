@@ -66,7 +66,7 @@
             android:id="@+id/capture2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/p1"/>
+            android:src="@drawable/p2"/>
 
     </LinearLayout>
 
@@ -91,7 +91,7 @@
             android:id="@+id/capture3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/p1"/>
+            android:src="@drawable/p3"/>
 
     </LinearLayout>
     <LinearLayout
@@ -115,7 +115,127 @@
             android:id="@+id/capture4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/p1"/>
+            android:src="@drawable/p4"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:padding="5dp"
+        android:background="@color/colorlistbg2">
+
+        <TextView
+            android:id="@+id/time5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="item_datetime (날짜시간)"
+            android:text="05/30_11:28:01"
+            android:textStyle="bold"
+            android:textColor="@color/colorselected"
+            android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/capture5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/p5"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:padding="5dp"
+        android:background="@color/colorlistbg2">
+
+        <TextView
+            android:id="@+id/time6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="item_datetime (날짜시간)"
+            android:text="05/30_11:28:06"
+            android:textStyle="bold"
+            android:textColor="@color/colorselected"
+            android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/capture6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/p6"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:padding="5dp"
+        android:background="@color/colorlistbg2">
+
+        <TextView
+            android:id="@+id/time7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="item_datetime (날짜시간)"
+            android:text="05/30_11:28:11"
+            android:textStyle="bold"
+            android:textColor="@color/colorselected"
+            android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/capture7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/p7"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:padding="5dp"
+            android:background="@color/colorlistbg2">
+
+            <TextView
+                android:id="@+id/time5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_datetime (날짜시간)"
+                android:text="05/30_11:28:01"
+                android:textStyle="bold"
+                android:textColor="@color/colorselected"
+                android:textSize="20dp" />
+            <ImageView
+                android:id="@+id/capture5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/p5"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:padding="5dp"
+            android:background="@color/colorlistbg2">
+
+            <TextView
+                android:id="@+id/time8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_datetime (날짜시간)"
+                android:text="05/30_11:28:16"
+                android:textStyle="bold"
+                android:textColor="@color/colorselected"
+                android:textSize="20dp" />
+            <ImageView
+                android:id="@+id/capture8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/p8"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>
