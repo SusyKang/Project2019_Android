@@ -1,35 +1,26 @@
 package com.electric5.project2019;
 
+
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.LayoutInflater;
+/cdimport android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-
 import com.electric5.project2019.model.UploadResult;
-
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -39,71 +30,27 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class SettingFragment extends Fragment {
     //upload
     ProgressDialog asyncDialog;
     private Button uploadsound;
     String getServerURL = "";
-    String getmp3URL = "/sdcard/Music/record.wav";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
+    String getmp3URL="/sdcard/Music/record.mp3";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
 
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
-
-    private Switch s1;
-    private Switch s2;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        s1 = (Switch) view.findViewById(R.id.vibswitch);
-        s2 = (Switch) view.findViewById(R.id.soundswitch);
-
-        final Button record = (Button) view.findViewById(R.id.record);
-        final Button play = (Button) view.findViewById(R.id.recordplay);
-        uploadsound = (Button) view.findViewById(R.id.recordupload);
+        final Button record = (Button)view.findViewById(R.id.record);
+        final Button play = (Button)view.findViewById(R.id.recordplay);
+        uploadsound= (Button)view.findViewById(R.id.recordupload);
 
         checkDangerousPermissions(); // 접근 권한 체크
 
-        getServerURL = getContext().getResources().getString(R.string.ip_address)+"/uploadsound";//서버 ip
-
-        SharedPreferences sf = getContext().getSharedPreferences("switchpref", Activity.MODE_PRIVATE);
-        String vib_state = sf.getString("vib",""); //vib라는 key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환
-        String beep_state = sf.getString("beep","");
-
-        if (vib_state.equals("on")){ //진동 알림 on일 때
-            s1.setChecked(true);
-        }
-        else {
-            s1.setChecked(false);
-        }
-
-        if (beep_state.equals("on")){ //진동 알림 on일 때
-            s2.setChecked(true);
-        }
-        else {
-            s2.setChecked(false);
-        }
-
-        s1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckStateS1();
-            }
-
-        });
-        s2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckStateS2();
-            }
-        });
-
-
-
+        getServerURL = getContext().getResources().getString(R.string.ip_address);//서버 ip
         //녹음 버튼
         record.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -129,7 +76,6 @@ public class SettingFragment extends Fragment {
             }
         });
 
-        //녹음 업로드 버튼
         uploadsound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,41 +93,6 @@ public class SettingFragment extends Fragment {
 
         return view;
     }
-
-
-    // 진동 알림 스위치 상태
-    private void CheckStateS1() {
-        if(s1.isChecked()) {
-            SharedPreferences settings = getContext().getSharedPreferences("switchpref", Activity.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("vib", "on");
-            editor.commit();
-        }
-        else {
-            SharedPreferences settings = getContext().getSharedPreferences("switchpref", Activity.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("vib", "off");
-            editor.commit();
-        }
-    }
-
-    // 소리 알림 스위치 상태
-    private void CheckStateS2() {
-        if(s2.isChecked()) {
-            SharedPreferences settings = getContext().getSharedPreferences("switchpref", MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("beep", "on");
-            editor.commit();
-        }
-        else {
-            SharedPreferences settings = getContext().getSharedPreferences("switchpref", MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("beep", "off");
-            editor.commit();
-        }
-    }
-
-
     //파일 업로드
     private void uploadFile(String soundurl) {//
 
@@ -210,8 +121,8 @@ public class SettingFragment extends Fragment {
         //audio/mpeg => mp3로 고쳐서 해보기
         // MultipartBody.Part is used to send also the actual file name
         MultipartBody.Part body = MultipartBody.Part.createFormData("sound", sound.getName(), soundBody);
-        Log.i("myTag", "this file'name is " + soundBody.toString());
-        Log.i("myTag", "this file'name is " + sound.getPath());
+        Log.i("myTag","this file'name is "+ soundBody.toString());
+        Log.i("myTag","this file'name is "+ sound.getPath());
 
 
         /**
@@ -222,13 +133,13 @@ public class SettingFragment extends Fragment {
         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), descriptionString);
 
 
-        Call<ResponseBody> call = service.upload(body, description);
+        Call<ResponseBody> call = service.upload(body,description);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                if (response.isSuccessful()) {
+                if(response.isSuccessful()){
 
                     Gson gson = new Gson();
                     try {
@@ -241,22 +152,22 @@ public class SettingFragment extends Fragment {
 
                         UploadResult example = gson.fromJson(rootObejct, UploadResult.class);
 
-                        Log.i("mytag", example.url);
+                        Log.i("mytag",example.url);
 
                         String result = example.result;
 
-                        if (result.equals("success")) {
-                            Toast.makeText(getContext(), "업로드 성공!!!!", Toast.LENGTH_SHORT).show();
+                        if(result.equals("success")){
+                            Toast.makeText(getContext(),"업로드 성공!!!!",Toast.LENGTH_SHORT).show();
                         }
 
                     } catch (IOException e) {
                         e.printStackTrace();
-                        Log.i("MyTag", "error : " + e.getMessage());
+                        Log.i("MyTag", "error : "+e.getMessage());
                     }
 
 
-                } else {
-                    Toast.makeText(getContext(), "업로드 실패!!!!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(),"업로드 실패!!!!",Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -273,10 +184,11 @@ public class SettingFragment extends Fragment {
             }
 
 
+
         });
     }
 
-    final int REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA = 1;
+    final int  REQUEST_EXTERNAL_STORAGE_FOR_MULTIMEDIA = 1;
 
     // 접근 권한 체크
     private void checkDangerousPermissions() {
@@ -309,7 +221,7 @@ public class SettingFragment extends Fragment {
                     break;
             }
         } else { // permission was denied
-            Toast.makeText(getContext(), "접근 권한이 필요합니다", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"접근 권한이 필요합니다",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -339,7 +251,7 @@ public class SettingFragment extends Fragment {
 
 
     // 녹음 시작
-    private void startAudioRec() {
+    private void startAudioRec()  {
         mMediaRecorder = new MediaRecorder();
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -357,13 +269,14 @@ public class SettingFragment extends Fragment {
     }
 
     // 녹음 중단
-    private void stopAudioRec() {
+    private void stopAudioRec()  {
         mMediaRecorder.stop();
         mMediaRecorder.release();
         mMediaRecorder = null;
 
         Toast.makeText(getActivity(), "녹음을 중단합니다", Toast.LENGTH_SHORT).show();
     }
+
 
 
 }
