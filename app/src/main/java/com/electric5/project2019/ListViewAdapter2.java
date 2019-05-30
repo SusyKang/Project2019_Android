@@ -78,7 +78,7 @@ public class ListViewAdapter2 extends BaseAdapter {
 
         item_datetime.setText(mItems.get(position).item_datetime);
 
-        String capture_path = "http://223.194.130.198:80/uploads/" + mItems.get(position).item_capture_name; //TODO;라즈베리아이피
+        String capture_path = "http://192.169.0.9:80/uploads/" + mItems.get(position).item_capture_name; //TODO;라즈베리아이피
         item_capture.loadUrl(capture_path);
 
         return convertView;
