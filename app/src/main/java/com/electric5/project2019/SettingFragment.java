@@ -46,7 +46,7 @@ public class SettingFragment extends Fragment {
     ProgressDialog asyncDialog;
     private Button uploadsound;
     String getServerURL = "";
-    String getmp3URL = "/sdcard/Music/record.mp3";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
+    String getmp3URL = "/sdcard/Music/record.wav";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
 
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
@@ -68,7 +68,7 @@ public class SettingFragment extends Fragment {
 
         checkDangerousPermissions(); // 접근 권한 체크
 
-        getServerURL = getContext().getResources().getString(R.string.ip_address);//서버 ip
+        getServerURL = getContext().getResources().getString(R.string.ip_address)+"/uploadsound";//서버 ip
 
         SharedPreferences sf = getContext().getSharedPreferences("switchpref", Activity.MODE_PRIVATE);
         String vib_state = sf.getString("vib",""); //vib라는 key에 저장된 값이 있는지 확인. 아무값도 들어있지 않으면 ""를 반환

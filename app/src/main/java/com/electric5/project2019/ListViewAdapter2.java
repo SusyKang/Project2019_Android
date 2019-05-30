@@ -80,6 +80,7 @@ public class ListViewAdapter2 extends BaseAdapter {
 
         item_datetime.setText(mItems.get(position).item_datetime);
 
+
         String capture_path = ip + "/uploads/" + mItems.get(position).item_capture_name;
         item_capture.loadUrl(capture_path);
 

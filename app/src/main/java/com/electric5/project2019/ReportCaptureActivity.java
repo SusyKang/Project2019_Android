@@ -44,7 +44,7 @@ public class ReportCaptureActivity extends AppCompatActivity {
                 for(int i=0; i<dataArray.length(); i++) {
                     JSONObject jsonObject2 = dataArray.getJSONObject(i);
 
-                    ReportCapture myItem = new ReportCapture(jsonObject2.getString("datetime"),jsonObject2.getString("capturename"));
+                    ReportCapture myItem = new ReportCapture(jsonObject2.getString("date"),jsonObject2.getString("img_path"));
                     data.add(myItem);
                 }
 
