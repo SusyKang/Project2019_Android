@@ -36,7 +36,6 @@ import java.util.concurrent.ExecutionException;
 
 import static android.app.Activity.RESULT_OK;
 
-// TODO: babyphoto, mainicon 잘되는지 확인
 public class MainFragment extends Fragment {
     public MainFragment() {
     }

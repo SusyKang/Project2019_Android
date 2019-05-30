@@ -99,7 +99,7 @@ public class StreamingFragment extends Fragment {
                 JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
                 try {
                     postDataParam.put("msg", "SOUND");
-                    ModeChange.act = 3; // TODO: 확인하기
+                    ModeChange.act = 3;
                     String result = new ControlRequest(getActivity()).execute(postDataParam).get();
                     if (result!=null){
                         recordplayctl.setText("녹음 재생");
