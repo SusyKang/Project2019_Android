@@ -32,7 +32,7 @@ public class ReportCaptureActivity extends AppCompatActivity {
         JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
         try {
             postDataParam.put("id", localid);
-            String result = new BoardRequest(ReportCaptureActivity.this).execute(postDataParam).get();
+            String result = new ImgRequest(ReportCaptureActivity.this).execute(postDataParam).get();
 
             JSONObject jsonObject = new JSONObject(result);
             String success = jsonObject.getString("success");
