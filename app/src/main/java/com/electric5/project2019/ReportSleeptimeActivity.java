@@ -14,9 +14,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-// TODO: 라즈베리파이가 보내준 수면 시간 데이터 불러오기
+// 라즈베리파이가 보내준 수면 시간 데이터 불러오기
 public class ReportSleeptimeActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

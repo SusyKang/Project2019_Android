@@ -19,8 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-// TODO: 라즈베리에서 위험상황 json보내면 받아서 진동 or 소리
-// 참고 링크 https://stackoverflow.com/questions/34063863/android-on-off-push-notification-when-on-off-toggle-button
 public class MainActivity extends AppCompatActivity {
 
     @Override

@@ -22,7 +22,6 @@ import com.electric5.project2019.R;
 import java.util.List;
 
 // 리포트 프래그먼트 - 위기상황 캡쳐 보기, 수면 시간 기록 보기 (각각 액티비티로 이동)
-// TODO: 라즈베리파이가 보내준 위기상황 캡쳐 불러오기
 public class ReportFragment extends Fragment {
 
     //  private Button report_capture, report_sleeptime;

@@ -30,8 +30,6 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 
 // 실시간 스트리밍 프래그먼트
-//TODO :  controlbutton2 녹음재생 제어
-//TODO :  controlbutton3 전원onoff 
 public class StreamingFragment extends Fragment {
 
     private WebView video;
@@ -95,18 +93,13 @@ public class StreamingFragment extends Fragment {
         });
 
         //녹음재생 제어 버튼
-        //TODO: 서버에 있는 음성파일 라즈베리파이로 출력
-        //서버에 녹음파일 있는지 체크
-        //파일 있으면 모터처럼 현재 실행 중인지 체크
-        // 재생 중이면 >> 끄고 recordplayctl.setText("녹음 재생");
-        // 재생 안하고 있으면 >> 켜고 recordplayctl.setText("녹음 재생 중");
-        //파일 없으면 토스트  Toast.makeText(getContext(),"음성을 먼저 녹음하세요",Toast.LENGTH_SHORT).show();
         recordplayctl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
                 try {
                     postDataParam.put("msg", "SOUND");
+                    ModeChange.act = 3; // TODO: 확인하기
                     String result = new ControlRequest(getActivity()).execute(postDataParam).get();
                     if (result!=null){
                         recordplayctl.setText("녹음 재생");
