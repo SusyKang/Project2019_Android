@@ -23,7 +23,7 @@ public class ReportCaptureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_capture);
 
-
+/*
         //유저정보 받아오는 코드
         SharedPreferences info =getSharedPreferences("id", MODE_PRIVATE);
         final String localid = info.getString("id", "");
@@ -64,6 +64,6 @@ public class ReportCaptureActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
+*/
     }
 }
