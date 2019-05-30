@@ -62,12 +62,12 @@ public class MainFragment extends Fragment {
         TextView howold = (TextView) view.findViewById(R.id.howold);
 
         ImageView mainicon = (ImageView) view.findViewById(R.id.mainicon);
-
+/*
         babyphoto = (ImageView) view.findViewById(R.id.babyphoto);
         babyphotoupload = (Button) view.findViewById(R.id.babyphotoupload);
         babyphotosave = (Button) view.findViewById(R.id.babyphotosave);
 
-        tv_path = (TextView) view.findViewById(R.id.tv_path);
+        tv_path = (TextView) view.findViewById(R.id.tv_path); */
 
         try {
             //로그인된 사용자 정보 로드
@@ -94,12 +94,12 @@ public class MainFragment extends Fragment {
 
                 howold.setText(""+calculatehowold(byear, bmonth, bday));
 
-                saved_path = jsonObject2.getString("imgpath");
+                //saved_path = jsonObject2.getString("imgpath");
 
-                File imgFile = new File(saved_path);
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                babyphoto.setImageBitmap(myBitmap);
-                tv_path.setText(saved_path);
+               // File imgFile = new File(saved_path);
+               // Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+               // babyphoto.setImageBitmap(myBitmap);
+               // tv_path.setText(saved_path);
 
                 // 생일 비교
                 Calendar cal = Calendar.getInstance();
@@ -123,7 +123,7 @@ public class MainFragment extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
+/*
         // 사진 등록 버튼
         babyphotoupload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +167,7 @@ public class MainFragment extends Fragment {
                 }
             }
         });
-
+*/
 /*
         //saved_path = path;
 
@@ -203,7 +203,7 @@ public class MainFragment extends Fragment {
             return -1;
         }
     }
-
+/*
     // 갤러리에서 사진 선택
     private void startGallery() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -234,5 +234,5 @@ public class MainFragment extends Fragment {
             }
         }
     }
-
+*/
 }
