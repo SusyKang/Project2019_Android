@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/recordplay"
             android:background="@color/transparent"
-            android:text="녹음 재생"
+            android:text="노래 재생"
             android:id="@+id/controlbutton2"/>
 
     </LinearLayout>

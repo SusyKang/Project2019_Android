@@ -37,7 +37,7 @@ public class SettingFragment extends Fragment {
     ProgressDialog asyncDialog;
     private Button uploadsound;
     String getServerURL = "";
-    String getmp3URL="/sdcard/Music/record.mp3";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
+    String getmp3URL="/sdcard/Music/01.mp3";//폰 sdcard Music 에 녹음 파일 저장 후 upload하는 파일
 
     private MediaRecorder mMediaRecorder;
     private MediaPlayer mMediaPlayer;
@@ -120,7 +120,6 @@ public class SettingFragment extends Fragment {
 
         File sound = new File(soundurl);
         RequestBody soundBody = RequestBody.create(MediaType.parse("audio/wav"), sound);
-        //audio/mpeg => mp3로 고쳐서 해보기
         // MultipartBody.Part is used to send also the actual file name
         MultipartBody.Part body = MultipartBody.Part.createFormData("sound", sound.getName(), soundBody);
         Log.i("myTag","this file'name is "+ soundBody.toString());
@@ -128,13 +127,10 @@ public class SettingFragment extends Fragment {
 
 
         /**
-         * 사진 업로드하는 부분 // POST방식 이용
+         * 업로드하는 부분 // POST방식 이용
          */// add another part within the multipart request
         String descriptionString = "android";
-
         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), descriptionString);
-
-
         Call<ResponseBody> call = service.upload(body,description);
 
         call.enqueue(new Callback<ResponseBody>() {
@@ -146,33 +142,22 @@ public class SettingFragment extends Fragment {
                     Gson gson = new Gson();
                     try {
                         String getResult = response.body().string();
-
                         JsonParser parser = new JsonParser();
                         JsonElement rootObejct = parser.parse(getResult);
 
-//                        Log.i("mytag",rootObejct.toString());
-
                         UploadResult example = gson.fromJson(rootObejct, UploadResult.class);
-
                         Log.i("mytag",example.url);
-
                         String result = example.result;
-
                         if(result.equals("success")){
                             Toast.makeText(getContext(),"업로드 성공!!!!",Toast.LENGTH_SHORT).show();
                         }
-
                     } catch (IOException e) {
                         e.printStackTrace();
                         Log.i("MyTag", "error : "+e.getMessage());
                     }
-
-
                 }else{
                     Toast.makeText(getContext(),"업로드 실패!!!!",Toast.LENGTH_SHORT).show();
                 }
-
-
                 // dismiss dialog
                 asyncDialog.dismiss();
             }
@@ -180,13 +165,8 @@ public class SettingFragment extends Fragment {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("Upload error:", t.getMessage());
-
-                // dismiss dialog
                 asyncDialog.dismiss();
             }
-
-
-
         });
     }
 

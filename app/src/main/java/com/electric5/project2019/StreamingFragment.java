@@ -66,7 +66,7 @@ public class StreamingFragment extends Fragment {
                 return true;
             }
         });
-        video.loadUrl("http://192.168.0.9:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
+        video.loadUrl("http://192.168.0.10:8090/?action=stream");  // TODO: 라즈베리파이 서버 주소
 
 
         final Button motorctl = (Button) view.findViewById(R.id.controlbutton1);
@@ -98,12 +98,15 @@ public class StreamingFragment extends Fragment {
             public void onClick(View v) {
                 JSONObject postDataParam = new JSONObject(); //JSON생성 : JSONObject는 JSON형태의 데이터를 관리해 주는 메서드
                 try {
-                    postDataParam.put("msg", "SOUND");
-                    ModeChange.act = 3;
-                    String result = new ControlRequest(getActivity()).execute(postDataParam).get();
-                    if (result!=null){
-                        recordplayctl.setText("녹음 재생");
-                    }
+
+                        postDataParam.put("msg", "SOUND");
+                        ModeChange.act = 3;
+                        String result = new ControlRequest(getActivity()).execute(postDataParam).get();
+                        if (result != null) {
+                            recordplayctl.setText("노래 재생");
+                        }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
